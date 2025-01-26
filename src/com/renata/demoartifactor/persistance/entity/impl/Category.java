@@ -1,6 +1,7 @@
 package com.renata.demoartifactor.persistance.entity.impl;
 
 import com.renata.demoartifactor.persistance.entity.Entity;
+import com.renata.demoartifactor.persistance.entity.ErrorTemplates;
 import java.util.UUID;
 
 public class Category extends Entity implements Comparable<Category> {
@@ -17,9 +18,14 @@ public class Category extends Entity implements Comparable<Category> {
     public String getName() {
         return name;
     }
-
-    // add validation
+    
     public void setName(String name) {
+        final String templateName = "назви";
+
+        if (name.isBlank()) {
+            errors.add(ErrorTemplates.REQUIRED.getTemplate().formatted(templateName));
+        }
+
         this.name = name;
     }
 

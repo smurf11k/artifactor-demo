@@ -1,6 +1,7 @@
 package com.renata.demoartifactor.persistance.entity.impl;
 
 import com.renata.demoartifactor.persistance.entity.Entity;
+import com.renata.demoartifactor.persistance.entity.ErrorTemplates;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -28,23 +29,45 @@ public class AntiqueCollection extends Entity implements Comparable<AntiqueColle
         return name;
     }
 
+    public void setName(String name) {
+        final String templateName = "назви";
+
+        if (name.isBlank()) {
+            errors.add(ErrorTemplates.REQUIRED.getTemplate().formatted(templateName));
+        }
+
+        this.name = name;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDate getCreatedDate() {
         return createdDate;
     }
 
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
     public User getOwner() {
         return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public List<Item> getItems() {
         return items;
     }
 
-    // add setters
+    //add items to list
 
     @Override
     public int compareTo(AntiqueCollection o) {

@@ -4,7 +4,11 @@ import java.nio.file.Path;
 
 public enum JsonPathFactory {
     USERS("users.json"),
-    TAGS("tags.json");
+    TAGS("tags.json"),
+    ITEMS("items.json"),
+    COLLECTIONS("collections.json"),
+    CATEGORIES("categories.json"),
+    TRANSACTIONS("transactions.json"); //or csv to make it xsl
 
     private static final String DATA_DIRECTORY = "data";
     private final String fileName;

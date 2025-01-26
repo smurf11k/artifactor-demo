@@ -18,7 +18,7 @@ public class Tag extends Entity implements Comparable<Tag> {
         return name;
     }
 
-    // add validation
+    // add validation maybe?
     public void setName(String name) {
         this.name = name;
     }
