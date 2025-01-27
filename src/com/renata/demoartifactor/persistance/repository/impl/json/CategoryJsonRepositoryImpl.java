@@ -19,7 +19,7 @@ final class CategoryJsonRepositoryImpl
             .getType());
     }
 
-    //change and fix if needed
+    //change if needed
     @Override
     public Set<Category> findAllByItem(Item item) {
         return entities.stream()

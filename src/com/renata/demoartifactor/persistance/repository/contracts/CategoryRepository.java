@@ -7,5 +7,5 @@ import java.util.Set;
 
 public interface CategoryRepository extends Repository<Category> {
 
-    Set<Category> findAllByItem(Item item); //change
+    Set<Category> findAllByItem(Item item); //check
 }

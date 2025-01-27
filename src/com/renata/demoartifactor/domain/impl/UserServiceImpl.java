@@ -1,7 +1,5 @@
 package com.renata.demoartifactor.domain.impl;
 
-import static com.renata.demoartifactor.domain.Reportable.REPORTS_DIRECTORY;
-
 import com.renata.demoartifactor.domain.contract.UserService;
 import com.renata.demoartifactor.domain.dto.UserAddDto;
 import com.renata.demoartifactor.domain.exception.EntityNotFoundException;
@@ -40,8 +38,8 @@ public class UserServiceImpl extends GenericService<User> implements UserService
 
     @Override
     public User getByEmail(String email) {
-        return userRepository.findByUsername(email)
-            .orElseThrow(() -> new EntityNotFoundException("Такого користувача не існує."));
+        return userRepository.findByEmail(email)
+            .orElseThrow(() -> new EntityNotFoundException("Такої пошти користувача не існує."));
     }
 
     @Override

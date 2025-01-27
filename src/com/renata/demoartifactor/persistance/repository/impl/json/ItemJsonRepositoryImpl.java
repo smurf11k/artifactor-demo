@@ -2,6 +2,7 @@ package com.renata.demoartifactor.persistance.repository.impl.json;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.renata.demoartifactor.persistance.entity.impl.Category;
 import com.renata.demoartifactor.persistance.entity.impl.Item;
 import com.renata.demoartifactor.persistance.entity.impl.Tag;
 import com.renata.demoartifactor.persistance.repository.contracts.ItemRepository;
@@ -17,9 +18,9 @@ final class ItemJsonRepositoryImpl extends GenericJsonRepository<Item> implement
     }
 
     @Override
-    public Set<Item> findAllByMaterial(String material) {
+    public Set<Item> findAllByCategory(Category category) {
         return entities.stream()
-            .filter(item -> material.equals(item.getMaterial()))
+            .filter(item -> category.equals(item.getCategory()))
             .collect(Collectors.toSet());
     }
 

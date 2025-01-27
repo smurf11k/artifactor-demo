@@ -19,10 +19,10 @@ import java.util.function.Supplier;
 
 final class SignUpServiceImpl implements SignUpService {
 
-    private static final int VERIFICATION_CODE_EXPIRATION_MINUTES = 1;
+    private static final int VERIFICATION_CODE_EXPIRATION_MINUTES = 2;
     private static LocalDateTime codeCreationTime;
     private final UserService userService;
-    
+
     SignUpServiceImpl(UserService userService) {
         this.userService = userService;
     }

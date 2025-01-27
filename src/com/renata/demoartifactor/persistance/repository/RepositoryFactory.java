@@ -1,6 +1,10 @@
 package com.renata.demoartifactor.persistance.repository;
 
+import com.renata.demoartifactor.persistance.repository.contracts.AntiqueCollectionRepository;
+import com.renata.demoartifactor.persistance.repository.contracts.CategoryRepository;
+import com.renata.demoartifactor.persistance.repository.contracts.ItemRepository;
 import com.renata.demoartifactor.persistance.repository.contracts.TagRepository;
+import com.renata.demoartifactor.persistance.repository.contracts.TransactionRepository;
 import com.renata.demoartifactor.persistance.repository.contracts.UserRepository;
 import com.renata.demoartifactor.persistance.repository.impl.json.JsonRepositoryFactory;
 import org.apache.commons.lang3.NotImplementedException;
@@ -24,7 +28,15 @@ public abstract class RepositoryFactory {
 
     public abstract TagRepository getTagRepository();
 
+    public abstract ItemRepository getItemRepository();
+
+    public abstract TransactionRepository getTransactionRepository();
+
+    public abstract CategoryRepository getCategoryRepository();
+
     public abstract UserRepository getUserRepository();
+
+    public abstract AntiqueCollectionRepository getCollectionRepository();
 
     public abstract void commit();
 }
