@@ -16,35 +16,41 @@ final class AuthServiceImpl implements AuthService {
         this.userRepository = userRepository;
     }
 
+    @Override
     public boolean authenticate(String username, String password) {
-        // Перевіряємо, чи вже існує аутентифікований користувач
         if (user != null) {
             throw new UserAlreadyAuthException("Ви вже авторизувалися як: %s"
                 .formatted(user.getUsername()));
         }
 
         User foundedUser = userRepository.findByUsername(username)
-            .orElseThrow(AuthException::new);
+            .orElseThrow(() -> new AuthException("Користувача з таким логіном не знайдено."));
 
         if (!BCrypt.checkpw(password, foundedUser.getPassword())) {
-            return false;
+            throw new AuthException("Невірний пароль.");
         }
 
         user = foundedUser;
         return true;
     }
 
+    @Override
     public boolean isAuthenticated() {
         return user != null;
     }
 
+    @Override
     public User getUser() {
+        if (user == null) {
+            throw new AuthException("Немає активного авторизованого користувача.");
+        }
         return user;
     }
 
+    @Override
     public void logout() {
         if (user == null) {
-            throw new UserAlreadyAuthException("Ви ще не авторизовані.");
+            throw new AuthException("Ви ще не авторизовані.");
         }
         user = null;
     }

@@ -26,4 +26,13 @@ final class UserJsonRepositoryImpl
     public Optional<User> findByEmail(String email) {
         return entities.stream().filter(u -> u.getUsername().equals(email)).findFirst();
     }
+
+    @Override
+    public User add(User user) {
+        super.add(user);
+        
+        JsonRepositoryFactory.getInstance().commit();
+
+        return user;
+    }
 }

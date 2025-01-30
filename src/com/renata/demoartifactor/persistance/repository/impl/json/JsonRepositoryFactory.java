@@ -9,9 +9,7 @@ import com.renata.demoartifactor.persistance.entity.Entity;
 import com.renata.demoartifactor.persistance.exception.JsonFileIOException;
 import com.renata.demoartifactor.persistance.repository.RepositoryFactory;
 import com.renata.demoartifactor.persistance.repository.contracts.AntiqueCollectionRepository;
-import com.renata.demoartifactor.persistance.repository.contracts.CategoryRepository;
 import com.renata.demoartifactor.persistance.repository.contracts.ItemRepository;
-import com.renata.demoartifactor.persistance.repository.contracts.TagRepository;
 import com.renata.demoartifactor.persistance.repository.contracts.TransactionRepository;
 import com.renata.demoartifactor.persistance.repository.contracts.UserRepository;
 import java.io.FileWriter;
@@ -26,12 +24,10 @@ import java.util.Set;
 public class JsonRepositoryFactory extends RepositoryFactory {
 
     private final Gson gson;
-    private final TagJsonRepositoryImpl tagJsonRepositoryImpl;
     private final UserJsonRepositoryImpl userJsonRepositoryImpl;
     private final AntiqueCollectionJsonRepositoryImpl collectionJsonRepositoryImpl;
     private final ItemJsonRepositoryImpl itemJsonRepositoryImpl;
     private final TransactionJsonRepositoryImpl transactionJsonRepositoryImpl;
-    private final CategoryJsonRepositoryImpl categoryJsonRepositoryImpl;
 
     private JsonRepositoryFactory() {
         // Адаптер для типу даних LocalDateTime при серіалізації/десеріалізації
@@ -59,21 +55,14 @@ public class JsonRepositoryFactory extends RepositoryFactory {
 
         gson = gsonBuilder.setPrettyPrinting().create();
 
-        tagJsonRepositoryImpl = new TagJsonRepositoryImpl(gson);
         userJsonRepositoryImpl = new UserJsonRepositoryImpl(gson);
         collectionJsonRepositoryImpl = new AntiqueCollectionJsonRepositoryImpl(gson);
         itemJsonRepositoryImpl = new ItemJsonRepositoryImpl(gson);
         transactionJsonRepositoryImpl = new TransactionJsonRepositoryImpl(gson);
-        categoryJsonRepositoryImpl = new CategoryJsonRepositoryImpl(gson);
     }
 
     public static JsonRepositoryFactory getInstance() {
         return InstanceHolder.INSTANCE;
-    }
-
-    @Override
-    public TagRepository getTagRepository() {
-        return tagJsonRepositoryImpl;
     }
 
     @Override
@@ -96,21 +85,13 @@ public class JsonRepositoryFactory extends RepositoryFactory {
         return transactionJsonRepositoryImpl;
     }
 
-    @Override
-    public CategoryRepository getCategoryRepository() {
-        return categoryJsonRepositoryImpl;
-    }
-
     public void commit() {
-        serializeEntities(tagJsonRepositoryImpl.getPath(), tagJsonRepositoryImpl.findAll());
         serializeEntities(userJsonRepositoryImpl.getPath(), userJsonRepositoryImpl.findAll());
         serializeEntities(collectionJsonRepositoryImpl.getPath(),
             collectionJsonRepositoryImpl.findAll());
         serializeEntities(itemJsonRepositoryImpl.getPath(), itemJsonRepositoryImpl.findAll());
         serializeEntities(transactionJsonRepositoryImpl.getPath(),
             transactionJsonRepositoryImpl.findAll());
-        serializeEntities(categoryJsonRepositoryImpl.getPath(),
-            categoryJsonRepositoryImpl.findAll());
     }
 
     private <E extends Entity> void serializeEntities(Path path, Set<E> entities) {

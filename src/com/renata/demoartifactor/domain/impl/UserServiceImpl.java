@@ -21,7 +21,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.mindrot.bcrypt.BCrypt;
 
-public class UserServiceImpl extends GenericService<User> implements UserService {
+final class UserServiceImpl extends GenericService<User> implements UserService {
 
     private final UserRepository userRepository;
 
@@ -70,6 +70,8 @@ public class UserServiceImpl extends GenericService<User> implements UserService
         return user;
     }
 
+    // consider removing this
+    //TODO instead add xls file for TransactionHistory
     @Override
     public void generateReport(Predicate<User> filter) {
         Workbook workbook = new HSSFWorkbook();

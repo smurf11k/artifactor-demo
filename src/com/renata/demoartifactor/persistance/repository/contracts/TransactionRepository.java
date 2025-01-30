@@ -7,5 +7,5 @@ import java.util.Set;
 
 public interface TransactionRepository extends Repository<Transaction> {
 
-    Set<Transaction> findAllByDate(LocalDate date);
+    Set<Transaction> findByDate(LocalDate date);
 }

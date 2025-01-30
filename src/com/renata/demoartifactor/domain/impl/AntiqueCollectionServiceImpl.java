@@ -1,6 +1,7 @@
 package com.renata.demoartifactor.domain.impl;
 
 import com.renata.demoartifactor.domain.contract.AntiqueCollectionService;
+import com.renata.demoartifactor.domain.dto.AntiqueCollectionAddDto;
 import com.renata.demoartifactor.domain.exception.EntityNotFoundException;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
 import com.renata.demoartifactor.persistance.entity.impl.User;
@@ -10,7 +11,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
-public class AntiqueCollectionServiceImpl extends GenericService<AntiqueCollection> implements
+final class AntiqueCollectionServiceImpl extends GenericService<AntiqueCollection> implements
     AntiqueCollectionService {
 
     private final AntiqueCollectionRepository collectionRepository;
@@ -39,4 +40,23 @@ public class AntiqueCollectionServiceImpl extends GenericService<AntiqueCollecti
     public Set<AntiqueCollection> getAll(Predicate<AntiqueCollection> filter) {
         return new TreeSet<>(collectionRepository.findAll(filter));
     }
+
+    // fix if needed
+    @Override
+    public AntiqueCollection add(AntiqueCollectionAddDto collectionAddDto) {
+        AntiqueCollection collection = new AntiqueCollection(
+            collectionAddDto.getId(),
+            collectionAddDto.name(),
+            collectionAddDto.items(),
+            collectionAddDto.description(),
+            collectionAddDto.createdDate(),
+            collectionAddDto.owner() //current user who creates the collection
+        );
+
+        collectionRepository.add(
+            collection);
+
+        return collection;
+    }
+
 }

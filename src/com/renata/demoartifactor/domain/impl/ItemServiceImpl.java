@@ -1,14 +1,13 @@
 package com.renata.demoartifactor.domain.impl;
 
 import com.renata.demoartifactor.domain.contract.ItemService;
-import com.renata.demoartifactor.persistance.entity.impl.Category;
 import com.renata.demoartifactor.persistance.entity.impl.Item;
 import com.renata.demoartifactor.persistance.repository.contracts.ItemRepository;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
-public class ItemServiceImpl extends GenericService<Item> implements ItemService {
+final class ItemServiceImpl extends GenericService<Item> implements ItemService {
 
     private final ItemRepository itemRepository;
 
@@ -17,10 +16,11 @@ public class ItemServiceImpl extends GenericService<Item> implements ItemService
         this.itemRepository = itemRepository;
     }
 
+    /*
     @Override
-    public Set<Item> getAllByCategory(Category category) {
-        return new TreeSet<>(itemRepository.findAllByCategory(category));
-    }
+    public Set<Item> getAllByType(ItemType itemType) {
+        return new TreeSet<>(itemRepository.findByItemType(itemType));
+    }*/
 
     @Override
     public Set<Item> getAll() {

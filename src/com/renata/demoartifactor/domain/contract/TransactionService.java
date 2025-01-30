@@ -7,5 +7,5 @@ import java.util.Set;
 
 public interface TransactionService extends Service<Transaction> {
 
-    Set<Transaction> getAllByDate(LocalDate date); //check
+    Set<Transaction> getAllByDate(LocalDate date); // check
 }

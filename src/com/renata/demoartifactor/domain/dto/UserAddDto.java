@@ -4,7 +4,6 @@ import com.renata.demoartifactor.persistance.entity.Entity;
 import com.renata.demoartifactor.persistance.entity.ErrorTemplates;
 import com.renata.demoartifactor.persistance.entity.impl.User.Role;
 import com.renata.demoartifactor.persistance.exception.EntityArgumentException;
-import java.time.LocalDate;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
@@ -30,7 +29,6 @@ public final class UserAddDto extends Entity {
         String username,
         String rawPassword,
         String email,
-        LocalDate birthday,
         Role role) {
         super(id);
         this.username = username;

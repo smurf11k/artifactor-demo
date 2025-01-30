@@ -67,7 +67,20 @@ public class AntiqueCollection extends Entity implements Comparable<AntiqueColle
         return items;
     }
 
-    //add items to list
+    // TODO add items to list
+
+    @Override
+    public String toString() {
+        return "AntiqueCollection{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", items=" + items +
+            ", description='" + description + '\'' +
+            ", createdDate=" + createdDate +
+            ", owner=" + (owner != null ? owner.toString() : "No owner") +
+            '}';
+    }
+
 
     @Override
     public int compareTo(AntiqueCollection o) {

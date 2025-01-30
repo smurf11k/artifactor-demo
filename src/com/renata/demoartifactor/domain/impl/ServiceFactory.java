@@ -2,10 +2,8 @@ package com.renata.demoartifactor.domain.impl;
 
 import com.renata.demoartifactor.domain.contract.AntiqueCollectionService;
 import com.renata.demoartifactor.domain.contract.AuthService;
-import com.renata.demoartifactor.domain.contract.CategoryService;
 import com.renata.demoartifactor.domain.contract.ItemService;
 import com.renata.demoartifactor.domain.contract.SignUpService;
-import com.renata.demoartifactor.domain.contract.TagService;
 import com.renata.demoartifactor.domain.contract.TransactionService;
 import com.renata.demoartifactor.domain.contract.UserService;
 import com.renata.demoartifactor.domain.exception.DependencyException;
@@ -17,9 +15,7 @@ public final class ServiceFactory {
     private final AuthService authService;
     private final AntiqueCollectionService collectionService;
     private final ItemService itemService;
-    private final TagService tagService;
     private final TransactionService transactionService;
-    private final CategoryService categoryService;
     private final UserService userService;
     private final SignUpService signUpService;
     private final RepositoryFactory repositoryFactory;
@@ -34,10 +30,8 @@ public final class ServiceFactory {
             userRepository
         );
         itemService = new ItemServiceImpl(repositoryFactory.getItemRepository());
-        tagService = new TagServiceImpl(repositoryFactory.getTagRepository());
         transactionService = new TransactionServiceImpl(
             repositoryFactory.getTransactionRepository());
-        categoryService = new CategoryServiceImpl(repositoryFactory.getCategoryRepository());
         userService = new UserServiceImpl(userRepository);
         signUpService = new SignUpServiceImpl(userService);
     }
@@ -72,7 +66,6 @@ public final class ServiceFactory {
         return authService;
     }
 
-
     public AntiqueCollectionService getCollectionService() {
         return collectionService;
     }
@@ -81,16 +74,8 @@ public final class ServiceFactory {
         return itemService;
     }
 
-    public TagService getTagService() {
-        return tagService;
-    }
-
     public TransactionService getTransactionService() {
         return transactionService;
-    }
-
-    public CategoryService getCategoryService() {
-        return categoryService;
     }
 
     public UserService getUserService() {

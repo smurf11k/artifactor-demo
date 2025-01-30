@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
-public class TransactionServiceImpl extends GenericService<Transaction> implements
+final class TransactionServiceImpl extends GenericService<Transaction> implements
     TransactionService {
 
     private final TransactionRepository transactionRepository;
@@ -20,7 +20,7 @@ public class TransactionServiceImpl extends GenericService<Transaction> implemen
 
     @Override
     public Set<Transaction> getAllByDate(LocalDate date) {
-        return new TreeSet<>(transactionRepository.findAllByDate(date));
+        return new TreeSet<>(transactionRepository.findByDate(date));
     }
 
     @Override
@@ -32,4 +32,6 @@ public class TransactionServiceImpl extends GenericService<Transaction> implemen
     public Set<Transaction> getAll(Predicate<Transaction> filter) {
         return new TreeSet<>(transactionRepository.findAll(filter));
     }
+
+    //TODO add somewhere here a method for saving the transaction history into a .xls file
 }

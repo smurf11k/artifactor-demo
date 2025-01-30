@@ -1,0 +1,28 @@
+[
+  {
+    "name": "something",
+    "description": "",
+    "createdDate": "29-01-2025",
+    "owner": {
+      "password": "user1Pass",
+      "role": "GENERAL",
+      "email": "user1@gmail.com",
+      "username": "user1",
+      "id": "70d6d2aa-a329-4a2a-9cd3-fc9a7e40a34a"
+    },
+    "id": "f8c25de5-24a6-46db-9621-fe4de89eea9d"
+  },
+  {
+    "name": "collection 2",
+    "description": "coin collection",
+    "createdDate": "29-01-2025",
+    "owner": {
+      "password": "user1Pass",
+      "role": "GENERAL",
+      "email": "user1@gmail.com",
+      "username": "user1",
+      "id": "70d6d2aa-a329-4a2a-9cd3-fc9a7e40a34a"
+    },
+    "id": "cda34655-7ace-41d5-9277-a968802e6ab2"
+  }
+]

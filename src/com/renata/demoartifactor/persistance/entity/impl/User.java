@@ -24,7 +24,7 @@ public class User
         setUsername(username);
         this.role = role;
 
-        if (this.isValid()) {
+        if (!this.isValid()) {
             throw new EntityArgumentException(errors);
         }
     }
@@ -114,18 +114,15 @@ public class User
     public enum Role {
         ADMIN("admin", Map.of(
             EntityName.USER, new Permission(true, true, true, true),
-            EntityName.TAG, new Permission(true, true, true, true),
             EntityName.TRANSACTION, new Permission(true, true, true, true),
             EntityName.COLLECTION, new Permission(true, true, true, true),
-            EntityName.ITEM, new Permission(true, true, true, true),
-            EntityName.CATEGORY, new Permission(true, true, true, true))),
+            EntityName.ITEM, new Permission(true, true, true, true))),
         GENERAL("general", Map.of(
-            EntityName.USER, new Permission(false, false, false, true),
-            EntityName.TAG, new Permission(true, true, true, true),
+            EntityName.USER, new Permission(false, false, false, true), // do I need read here ?
             EntityName.TRANSACTION, new Permission(true, false, false, true),
-            EntityName.COLLECTION, new Permission(true, true, true, true),
-            EntityName.ITEM, new Permission(true, true, true, true),
-            EntityName.CATEGORY, new Permission(false, false, false, true)));
+            EntityName.COLLECTION, new Permission(true, true, false, true),
+            EntityName.ITEM, new Permission(true, true, false, true)));
+        // instead of delete the user will sell ?
 
         private final String name;
         private final Map<EntityName, Permission> permissions;
@@ -143,7 +140,7 @@ public class User
             return permissions;
         }
 
-        public enum EntityName {USER, TAG, TRANSACTION, COLLECTION, ITEM, CATEGORY}
+        public enum EntityName {USER, TRANSACTION, COLLECTION, ITEM}
 
         public record Permission(boolean canAdd, boolean canEdit, boolean canDelete,
                                  boolean canRead) {

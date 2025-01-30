@@ -31,8 +31,8 @@ final class SignUpServiceImpl implements SignUpService {
     private static void sendVerificationCodeEmail(String email, String verificationCode) {
         // Властивості для конфігурації підключення до поштового сервера
         Properties properties = new Properties();
-        properties.put("mail.smtp.host", "sandbox.smtp.mailtrap.io"); // Замініть на власний
-        properties.put("mail.smtp.port", "2525"); // Замініть на власний SMTP порт
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
@@ -40,7 +40,7 @@ final class SignUpServiceImpl implements SignUpService {
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("8c49268238c60d", "a1e3142ec54a95");
+                return new PasswordAuthentication("munkacsyrenata@gmail.com", "tejwjnbwsafaglyu");
             }
         });
 
@@ -99,6 +99,7 @@ final class SignUpServiceImpl implements SignUpService {
         codeCreationTime = null;
     }
 
+    //TODO add a couple of user to the json file using JavaFaker
     public void signUp(UserAddDto userAddDto, Supplier<String> waitForUserInput) {
         String verificationCode = generateAndSendVerificationCode(userAddDto.email());
         String userInputCode = waitForUserInput.get();

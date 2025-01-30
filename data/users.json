@@ -1,0 +1,30 @@
+[
+  {
+    "password": "$2a$10$Gceo76eFA7ToxJ/4DdVabu2THC76fvbI3IqbgXde/W1SzUjfgMu1G",
+    "role": "GENERAL",
+    "email": "test@gmail.com",
+    "username": "testUser2",
+    "id": "b8541120-e409-4081-a9a0-ab55f6c4007a"
+  },
+  {
+    "password": "$2a$10$qtq0vV6FIs4pvPRPj4Rv9OiDYI1rYDimqOQjkByTfu4AwfPu3E/w2",
+    "role": "GENERAL",
+    "email": "user1@gmail.com",
+    "username": "user1",
+    "id": "fb63ead7-61c6-4e1e-be2e-2f0c0c74f0ec"
+  },
+  {
+    "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+    "role": "ADMIN",
+    "email": "admin@gmail.com",
+    "username": "Admin",
+    "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+  },
+  {
+    "password": "$2a$10$/V0o2zbxZ1Js/Dl4KCN3dORKEgFwp5fAFesZ/dTIik2o6.FzrN92q",
+    "role": "GENERAL",
+    "email": "munkacsyrenata@gmail.com",
+    "username": "renata",
+    "id": "aef8508f-3285-4b2f-bbed-1cb29f6df5e7"
+  }
+]

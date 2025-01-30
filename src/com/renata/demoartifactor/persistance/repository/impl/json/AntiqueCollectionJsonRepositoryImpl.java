@@ -3,7 +3,6 @@ package com.renata.demoartifactor.persistance.repository.impl.json;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
-import com.renata.demoartifactor.persistance.entity.impl.Tag;
 import com.renata.demoartifactor.persistance.entity.impl.User;
 import com.renata.demoartifactor.persistance.repository.contracts.AntiqueCollectionRepository;
 import java.util.Set;
@@ -15,7 +14,7 @@ final class AntiqueCollectionJsonRepositoryImpl
 
     AntiqueCollectionJsonRepositoryImpl(Gson gson) {
         super(gson, JsonPathFactory.COLLECTIONS.getPath(), TypeToken
-            .getParameterized(Set.class, Tag.class)
+            .getParameterized(Set.class, AntiqueCollection.class)
             .getType());
     }
 
@@ -24,4 +23,14 @@ final class AntiqueCollectionJsonRepositoryImpl
         return entities.stream().filter(l -> l.getOwner().equals(owner))
             .collect(Collectors.toSet());
     }
+
+    @Override
+    public AntiqueCollection add(AntiqueCollection collection) {
+        super.add(collection);
+
+        JsonRepositoryFactory.getInstance().commit();
+
+        return collection;
+    }
+
 }
