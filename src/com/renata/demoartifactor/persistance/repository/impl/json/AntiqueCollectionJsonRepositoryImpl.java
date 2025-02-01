@@ -5,6 +5,8 @@ import com.google.gson.reflect.TypeToken;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
 import com.renata.demoartifactor.persistance.entity.impl.User;
 import com.renata.demoartifactor.persistance.repository.contracts.AntiqueCollectionRepository;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,9 +21,10 @@ final class AntiqueCollectionJsonRepositoryImpl
     }
 
     @Override
-    public Set<AntiqueCollection> findAllByOwner(User owner) {
-        return entities.stream().filter(l -> l.getOwner().equals(owner))
-            .collect(Collectors.toSet());
+    public List<AntiqueCollection> findAllByOwner(User owner) {
+        return entities.stream()
+            .filter(l -> l.getOwner().equals(owner))
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -29,8 +32,26 @@ final class AntiqueCollectionJsonRepositoryImpl
         super.add(collection);
 
         JsonRepositoryFactory.getInstance().commit();
-
         return collection;
     }
 
+    @Override
+    public void save(AntiqueCollection collection) {
+        Optional<AntiqueCollection> existingCollection = entities.stream()
+            .filter(c -> c.getId().equals(collection.getId()))
+            .findFirst();
+
+        if (existingCollection.isPresent()) {
+            entities.remove(existingCollection.get());
+        }
+
+        entities.add(collection);
+        JsonRepositoryFactory.getInstance().commit();
+    }
+
+    @Override
+    public void delete(AntiqueCollection collection) {
+        entities.remove(collection);
+        JsonRepositoryFactory.getInstance().commit();
+    }
 }

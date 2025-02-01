@@ -1,28 +1,28 @@
 [
   {
-    "name": "something",
-    "description": "",
-    "createdDate": "29-01-2025",
+    "name": "Японські цікавинки",
+    "description": "Тут зібрані цікаві антикварні предмети з Японії",
+    "createdDate": "01-02-2025",
     "owner": {
-      "password": "user1Pass",
-      "role": "GENERAL",
-      "email": "user1@gmail.com",
-      "username": "user1",
-      "id": "70d6d2aa-a329-4a2a-9cd3-fc9a7e40a34a"
+      "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+      "role": "ADMIN",
+      "email": "admin@gmail.com",
+      "username": "Admin",
+      "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
     },
-    "id": "f8c25de5-24a6-46db-9621-fe4de89eea9d"
+    "id": "232e3318-02f1-4891-9573-fe4593e1ee57"
   },
   {
-    "name": "collection 2",
-    "description": "coin collection",
-    "createdDate": "29-01-2025",
+    "name": "Римські вази",
+    "description": "Тут числяться вази які були знайдені при розкопках в Римі.",
+    "createdDate": "01-02-2025",
     "owner": {
-      "password": "user1Pass",
-      "role": "GENERAL",
-      "email": "user1@gmail.com",
-      "username": "user1",
-      "id": "70d6d2aa-a329-4a2a-9cd3-fc9a7e40a34a"
+      "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+      "role": "ADMIN",
+      "email": "admin@gmail.com",
+      "username": "Admin",
+      "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
     },
-    "id": "cda34655-7ace-41d5-9277-a968802e6ab2"
+    "id": "3d49371b-6bba-4bda-9d3b-a48279ea9d2c"
   }
 ]

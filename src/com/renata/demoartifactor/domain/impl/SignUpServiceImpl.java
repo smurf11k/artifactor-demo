@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 
 final class SignUpServiceImpl implements SignUpService {
 
-    private static final int VERIFICATION_CODE_EXPIRATION_MINUTES = 2;
+    private static final int VERIFICATION_CODE_EXPIRATION_MINUTES = 1;
     private static LocalDateTime codeCreationTime;
     private final UserService userService;
 
@@ -27,16 +27,13 @@ final class SignUpServiceImpl implements SignUpService {
         this.userService = userService;
     }
 
-    // відправлення на пошту
     private static void sendVerificationCodeEmail(String email, String verificationCode) {
-        // Властивості для конфігурації підключення до поштового сервера
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
-        // Отримання сесії з автентифікацією
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -45,22 +42,17 @@ final class SignUpServiceImpl implements SignUpService {
         });
 
         try {
-            // Створення об'єкта MimeMessage
             Message message = new MimeMessage(session);
 
-            // Встановлення відправника
-            message.setFrom(new InternetAddress("from@example.com")); // Замініть на власну адресу
+            message.setFrom(
+                new InternetAddress("munkacsyrenata@gmail.com"));
 
-            // Встановлення отримувача
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 
-            // Встановлення теми
             message.setSubject("Код підтвердження");
 
-            // Встановлення тексту повідомлення
             message.setText("Ваш код підтвердження: " + verificationCode);
 
-            // Відправлення повідомлення
             Transport.send(message);
 
             System.out.println("Повідомлення успішно відправлено.");
@@ -72,7 +64,6 @@ final class SignUpServiceImpl implements SignUpService {
     }
 
     private static String generateAndSendVerificationCode(String email) {
-        // Генерація 6-значного коду
         String verificationCode = String.valueOf((int) (Math.random() * 900000 + 100000));
 
         sendVerificationCodeEmail(email, verificationCode);
@@ -82,7 +73,6 @@ final class SignUpServiceImpl implements SignUpService {
         return verificationCode;
     }
 
-    // Перевірка введеного коду
     private static void verifyCode(String inputCode, String generatedCode) {
         LocalDateTime currentTime = LocalDateTime.now();
         long minutesElapsed = ChronoUnit.MINUTES.between(codeCreationTime, currentTime);
@@ -95,16 +85,15 @@ final class SignUpServiceImpl implements SignUpService {
             throw new SignUpException("Невірний код підтвердження.");
         }
 
-        // Скидання часу створення коду
         codeCreationTime = null;
     }
 
-    //TODO add a couple of user to the json file using JavaFaker
+    //TODO uncomment after testing
     public void signUp(UserAddDto userAddDto, Supplier<String> waitForUserInput) {
-        String verificationCode = generateAndSendVerificationCode(userAddDto.email());
-        String userInputCode = waitForUserInput.get();
+        //String verificationCode = generateAndSendVerificationCode(userAddDto.email());
+        //String userInputCode = waitForUserInput.get();
 
-        verifyCode(userInputCode, verificationCode);
+        //verifyCode(userInputCode, verificationCode);
 
         userService.add(userAddDto);
     }

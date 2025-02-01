@@ -1,1 +1,90 @@
-[]
+[
+  {
+    "name": "Toyota Supra - Tokyo Drift edition",
+    "itemType": "CLASSIC_CARS",
+    "collection": {
+      "name": "Японські цікавинки",
+      "description": "Тут зібрані цікаві антикварні предмети з Японії",
+      "createdDate": "01-02-2025",
+      "owner": {
+        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+        "role": "ADMIN",
+        "email": "admin@gmail.com",
+        "username": "Admin",
+        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+      },
+      "id": "232e3318-02f1-4891-9573-fe4593e1ee57"
+    },
+    "value": 5000.0,
+    "createdDate": "2017",
+    "dateAquired": "15-01-2025",
+    "description": "Та сама машина яку використовували на зйомках Форсажу.",
+    "id": "73000844-4f01-41c6-8262-01dbd7d38530"
+  },
+  {
+    "name": "Наручний годинник",
+    "itemType": "TIMEPIECES",
+    "collection": {
+      "name": "Японські цікавинки",
+      "description": "Тут зібрані цікаві антикварні предмети з Японії",
+      "createdDate": "01-02-2025",
+      "owner": {
+        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+        "role": "ADMIN",
+        "email": "admin@gmail.com",
+        "username": "Admin",
+        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+      },
+      "id": "232e3318-02f1-4891-9573-fe4593e1ee57"
+    },
+    "value": 200.0,
+    "createdDate": "1987",
+    "dateAquired": "19-01-2025",
+    "description": "Наручний годинник з гравіюванням.",
+    "id": "1c1da0bc-a45f-4158-a5e1-4407a0c01552"
+  },
+  {
+    "name": "Ваза з котами",
+    "itemType": "CERAMICS_AND_PORCELAIN",
+    "collection": {
+      "name": "Римські вази",
+      "description": "Тут числяться вази які були знайдені при розкопках в Римі.",
+      "createdDate": "01-02-2025",
+      "owner": {
+        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+        "role": "ADMIN",
+        "email": "admin@gmail.com",
+        "username": "Admin",
+        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+      },
+      "id": "3d49371b-6bba-4bda-9d3b-a48279ea9d2c"
+    },
+    "value": 120.0,
+    "createdDate": "1785",
+    "dateAquired": "11-01-2025",
+    "description": "Ваза прикрашена орнаментом котів які йдуть один за одним.",
+    "id": "997a5ede-b7d6-4376-88bc-e270fa799e61"
+  },
+  {
+    "name": "Ваза з квітковим орнаментом",
+    "itemType": "CERAMICS_AND_PORCELAIN",
+    "collection": {
+      "name": "Римські вази",
+      "description": "Тут числяться вази які були знайдені при розкопках в Римі.",
+      "createdDate": "01-02-2025",
+      "owner": {
+        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+        "role": "ADMIN",
+        "email": "admin@gmail.com",
+        "username": "Admin",
+        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+      },
+      "id": "3d49371b-6bba-4bda-9d3b-a48279ea9d2c"
+    },
+    "value": 175.0,
+    "createdDate": "1878",
+    "dateAquired": "15-01-2025",
+    "description": "Керамічна ваза з ручним оздобленням квітами.",
+    "id": "61e623a6-3705-4cf9-976c-b83a5959abca"
+  }
+]

@@ -3,9 +3,14 @@ package com.renata.demoartifactor.persistance.repository.contracts;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
 import com.renata.demoartifactor.persistance.entity.impl.User;
 import com.renata.demoartifactor.persistance.repository.Repository;
-import java.util.Set;
+import java.util.List;
 
 public interface AntiqueCollectionRepository extends Repository<AntiqueCollection> {
 
-    Set<AntiqueCollection> findAllByOwner(User owner);
+    List<AntiqueCollection> findAllByOwner(User owner);
+
+    void save(AntiqueCollection collection);
+
+    void delete(AntiqueCollection collection);
+
 }

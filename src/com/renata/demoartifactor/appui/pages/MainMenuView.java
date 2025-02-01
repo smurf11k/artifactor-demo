@@ -1,6 +1,6 @@
 package com.renata.demoartifactor.appui.pages;
 
-import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printHeader;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.pages.MainMenuView.MainMenu.ADD_COLLECTION;
@@ -17,7 +17,9 @@ import static com.renata.demoartifactor.appui.pages.MainMenuView.MainMenu.VIEW_C
 import static com.renata.demoartifactor.appui.pages.MainMenuView.MainMenu.VIEW_ITEMS;
 import static com.renata.demoartifactor.appui.pages.MainMenuView.MainMenu.VIEW_TRANSACTIONS;
 
+import com.renata.demoartifactor.appui.PageFactory;
 import com.renata.demoartifactor.appui.Renderable;
+import com.renata.demoartifactor.domain.impl.ServiceFactory;
 import com.renata.demoartifactor.persistance.entity.impl.User;
 import com.renata.demoartifactor.persistance.entity.impl.User.Role;
 import java.io.BufferedReader;
@@ -28,89 +30,69 @@ public final class MainMenuView implements Renderable {
 
     private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private final User.Role userRole;
+    PageFactory pageFactory;
+    ServiceFactory serviceFactory;
 
-    MainMenuView(Role userRole) {
+    public MainMenuView(Role userRole, ServiceFactory serviceFactory) {
         this.userRole = userRole;
+        this.pageFactory = PageFactory.getInstance(serviceFactory);
+        this.serviceFactory = serviceFactory;
     }
 
     private void process(MainMenu selectedItem) throws IOException {
         switch (selectedItem) {
-            case VIEW_COLLECTION -> {
-                System.out.println("Перегляд колекцій");
-            }
-            case ADD_COLLECTION -> {
-                System.out.println("Створення колекції");
-            }
-            case EDIT_COLLECTION -> {
-                System.out.println("Редагування колекцій");
-            }
-            case DELETE_COLLECTION -> {
-                System.out.println("Видалення колекцій");
-            }
+            case VIEW_COLLECTION -> pageFactory.createAntiqueCollectionView().render();
 
-            case ADD_ITEM -> {
-                //AddCollectionForm collectionForm = new(collectionService);
-                //collectionForm.render();
-                System.out.println("Створення предмету");
-            }
-            case EDIT_ITEM -> {
-                System.out.println("Редагування предмету");
-            }
-            case DELETE_ITEM -> {
-                System.out.println("Видалення предмету");
-            }
+            case ADD_COLLECTION -> pageFactory.createAddCollectionForm().render();
 
-            case MARKETPLACE -> {
-                System.out.println("Магазин");
-            }
+            case EDIT_COLLECTION -> pageFactory.createEditCollectionForm().render();
 
-            case VIEW_COLLECTIONS -> {
-                System.out.println("Перегляд всіх колекцій");
-            }
-            case VIEW_ITEMS -> {
-                System.out.println("Перегляд всіх предметів");
-            }
-            case VIEW_TRANSACTIONS -> {
-                System.out.println("Перегляд транзакцій");
-            }
+            case DELETE_COLLECTION -> pageFactory.createDeleteCollectionForm().render();
+
+            case ADD_ITEM -> pageFactory.createAddItemForm().render();
+
+            case EDIT_ITEM -> pageFactory.createEditItemForm().render();
+
+            case DELETE_ITEM -> pageFactory.createDeleteItemForm().render();
+
+            case MARKETPLACE -> pageFactory.createMarketplaceView(userRole).render();
+
+            case VIEW_COLLECTIONS -> pageFactory.createAntiqueCollectionsView().render();
+
+            case VIEW_ITEMS -> pageFactory.createItemsView().render();
+
+            case VIEW_TRANSACTIONS -> pageFactory.createTransactionView().render();
 
             case LOG_OUT -> {
-                System.out.println("Вихід з акаунту...");
-                // void logout() (AuthService)
-                // -> AuthView
+                printRedMessage("Вихід з акаунту...");
+                serviceFactory.getAuthService().logout();
+                pageFactory.createAuthView().render();
             }
-            case EXIT -> {
-                printRedMessage("Вихід з програми...");
-            }
-            default -> {
-                System.out.println("Неправильний вибір");
-            }
+            case EXIT -> printRedMessage("Вихід з програми...");
+            default -> System.err.println("Неправильний вибір");
         }
     }
 
     @Override
     public void render() throws IOException {
         while (true) {
-            printPurpleMessage("=== Головне меню ===");
+            printPurpleMessage("\n=== Головне меню ===");
             System.out.println("1. " + VIEW_COLLECTION.getName());
             System.out.println("2. " + ADD_COLLECTION.getName());
             System.out.println("3. " + EDIT_COLLECTION.getName());
             System.out.println("4. " + DELETE_COLLECTION.getName());
-
             System.out.println("5. " + ADD_ITEM.getName());
             System.out.println("6. " + EDIT_ITEM.getName());
             System.out.println("7. " + DELETE_ITEM.getName());
-
             System.out.println("8. " + MARKETPLACE.getName());
             System.out.println("9. " + LOG_OUT.getName());
-
             if (userRole == Role.ADMIN) {
                 System.out.println("10. " + VIEW_COLLECTIONS.getName());
                 System.out.println("11. " + VIEW_ITEMS.getName());
                 System.out.println("12. " + VIEW_TRANSACTIONS.getName());
             }
             System.out.println("0. " + EXIT.getName());
-            printGreenMessage("Зробіть вибір: ");
+            printHeader("Зробіть вибір: ");
 
             String choice = reader.readLine();
             MainMenu selectedItem;
@@ -154,7 +136,7 @@ public final class MainMenuView implements Renderable {
         ADD_ITEM("Створити предмет"),
         EDIT_ITEM("Редагувати предмет"),
         DELETE_ITEM("Видалити предмет"),
-        MARKETPLACE("Магазин"), //TODO change
+        MARKETPLACE("Ринок"),
         VIEW_TRANSACTIONS("Перегляд транзакцій"),
         VIEW_COLLECTIONS("Перегляд всіх колекцій"),
         VIEW_ITEMS("Перегляд предметів"),
@@ -171,5 +153,4 @@ public final class MainMenuView implements Renderable {
             return name;
         }
     }
-
 }

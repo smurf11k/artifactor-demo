@@ -5,15 +5,25 @@ import com.renata.demoartifactor.domain.exception.AuthException;
 import com.renata.demoartifactor.domain.exception.UserAlreadyAuthException;
 import com.renata.demoartifactor.persistance.entity.impl.User;
 import com.renata.demoartifactor.persistance.repository.contracts.UserRepository;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Optional;
 import org.mindrot.bcrypt.BCrypt;
 
 final class AuthServiceImpl implements AuthService {
 
+    private static final String SESSION_FILE = "session.txt";
+    private static final int BCRYPT_ROUNDS = 12;
     private final UserRepository userRepository;
     private User user;
+    private String sessionToken;
 
     AuthServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
+        loadSession();
     }
 
     @Override
@@ -25,12 +35,14 @@ final class AuthServiceImpl implements AuthService {
 
         User foundedUser = userRepository.findByUsername(username)
             .orElseThrow(() -> new AuthException("Користувача з таким логіном не знайдено."));
-
+        
         if (!BCrypt.checkpw(password, foundedUser.getPassword())) {
             throw new AuthException("Невірний пароль.");
         }
 
         user = foundedUser;
+        sessionToken = generateSessionToken();
+        saveSession();
         return true;
     }
 
@@ -53,5 +65,54 @@ final class AuthServiceImpl implements AuthService {
             throw new AuthException("Ви ще не авторизовані.");
         }
         user = null;
+        sessionToken = null;
+        clearSession();
+    }
+
+    private void saveSession() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(SESSION_FILE))) {
+            writer.write(user.getUsername() + ":" + sessionToken);
+        } catch (IOException e) {
+            System.err.println("Не вдалося зберегти сесію: " + e.getMessage());
+        }
+    }
+
+    private void loadSession() {
+        try {
+            if (Files.exists(Paths.get(SESSION_FILE))) {
+                String data = Files.readString(Paths.get(SESSION_FILE)).trim();
+                String[] parts = data.split(":");
+
+                if (parts.length != 2) {
+                    clearSession();
+                    return;
+                }
+
+                String username = parts[0];
+                String savedToken = parts[1];
+
+                Optional<User> savedUser = userRepository.findByUsername(username);
+                if (savedUser.isPresent() && BCrypt.checkpw(username, savedToken)) {
+                    user = savedUser.get();
+                    sessionToken = savedToken;
+                } else {
+                    clearSession();
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Не вдалося завантажити сесію: " + e.getMessage());
+        }
+    }
+
+    private void clearSession() {
+        try {
+            Files.deleteIfExists(Paths.get(SESSION_FILE));
+        } catch (IOException e) {
+            System.err.println("Не вдалося видалити сесію: " + e.getMessage());
+        }
+    }
+
+    private String generateSessionToken() {
+        return BCrypt.hashpw(user.getUsername(), BCrypt.gensalt(BCRYPT_ROUNDS));
     }
 }

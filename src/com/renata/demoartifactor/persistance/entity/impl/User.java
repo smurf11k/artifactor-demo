@@ -118,11 +118,10 @@ public class User
             EntityName.COLLECTION, new Permission(true, true, true, true),
             EntityName.ITEM, new Permission(true, true, true, true))),
         GENERAL("general", Map.of(
-            EntityName.USER, new Permission(false, false, false, true), // do I need read here ?
+            EntityName.USER, new Permission(false, false, false, true),
             EntityName.TRANSACTION, new Permission(true, false, false, true),
             EntityName.COLLECTION, new Permission(true, true, false, true),
             EntityName.ITEM, new Permission(true, true, false, true)));
-        // instead of delete the user will sell ?
 
         private final String name;
         private final Map<EntityName, Permission> permissions;

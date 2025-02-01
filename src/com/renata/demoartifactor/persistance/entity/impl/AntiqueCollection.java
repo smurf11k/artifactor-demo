@@ -3,23 +3,20 @@ package com.renata.demoartifactor.persistance.entity.impl;
 import com.renata.demoartifactor.persistance.entity.Entity;
 import com.renata.demoartifactor.persistance.entity.ErrorTemplates;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 public class AntiqueCollection extends Entity implements Comparable<AntiqueCollection> {
 
     public String name;
-    public List<Item> items; // items listed in the collection
     public String description;
     public LocalDate createdDate;
-    public User owner; // collection owner
+    public User owner;
 
-    public AntiqueCollection(UUID id, String name, List<Item> items, String description,
+    public AntiqueCollection(UUID id, String name, String description,
         LocalDate createdDate,
         User owner) {
         super(id);
         this.name = name;
-        this.items = items;
         this.description = description;
         this.createdDate = createdDate;
         this.owner = owner;
@@ -51,30 +48,15 @@ public class AntiqueCollection extends Entity implements Comparable<AntiqueColle
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
     public User getOwner() {
         return owner;
     }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    // TODO add items to list
 
     @Override
     public String toString() {
         return "AntiqueCollection{" +
             "id=" + id +
             ", name='" + name + '\'' +
-            ", items=" + items +
             ", description='" + description + '\'' +
             ", createdDate=" + createdDate +
             ", owner=" + (owner != null ? owner.toString() : "No owner") +

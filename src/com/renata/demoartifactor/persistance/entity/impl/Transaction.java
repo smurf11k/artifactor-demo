@@ -6,14 +6,15 @@ import java.util.UUID;
 
 public class Transaction extends Entity implements Comparable<Transaction> {
 
-    public String type; //купівля, продаж - make an enum
+    public TransactionType type; //купівля, продаж - make an enum
     //TODO maybe add some kind of marketplace for buying/selling
     public LocalDate date;
     public Item item; // item used in transaction
     public double amount; // amount of items used in the transaction
     public User user; //user who made the transaction
 
-    Transaction(UUID id, String type, LocalDate date, Item item, double amount, User user) {
+    Transaction(UUID id, TransactionType type, LocalDate date, Item item, double amount,
+        User user) {
         super(id);
         this.type = type;
         this.date = date;
@@ -22,11 +23,11 @@ public class Transaction extends Entity implements Comparable<Transaction> {
         this.user = user;
     }
 
-    public String getType() {
+    public TransactionType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TransactionType type) {
         this.type = type;
     }
 
@@ -76,5 +77,20 @@ public class Transaction extends Entity implements Comparable<Transaction> {
     @Override
     public int compareTo(Transaction o) {
         return this.date.compareTo(o.date);
+    }
+
+    enum TransactionType {
+        SELL("Продаж"),
+        BUY("Купівля");
+
+        private final String name;
+
+        TransactionType(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }

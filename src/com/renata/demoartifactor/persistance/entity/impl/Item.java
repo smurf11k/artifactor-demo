@@ -8,19 +8,18 @@ import java.util.UUID;
 public class Item extends Entity implements Comparable<Item> {
 
     public String name;
-    //public ItemType itemType;
+    public ItemType itemType;
     public AntiqueCollection collection;
     public double value; // approximate price
-    public LocalDate createdDate; // year (approximate date)
+    public String createdDate; // year (approximate date)
     public LocalDate dateAquired;
     public String description;
 
-    // add ItemType to the constructor
-    public Item(UUID id, String name, AntiqueCollection collection,
-        double value, LocalDate createdDate, LocalDate dateAquired, String description) {
+    public Item(UUID id, String name, ItemType itemType, AntiqueCollection collection,
+        double value, String createdDate, LocalDate dateAquired, String description) {
         super(id);
         this.name = name;
-        //this.itemType = itemType; // user chooses from existing categories
+        this.itemType = itemType; // user chooses from existing categories
         this.collection = collection; // choose from existing collections of the authorized user
         this.value = value;
         this.createdDate = createdDate;
@@ -43,14 +42,10 @@ public class Item extends Entity implements Comparable<Item> {
         this.name = name;
     }
 
-    /*
+
     public ItemType getItemType() {
         return itemType;
     }
-
-    public void setItemType(ItemType itemType) {
-        this.itemType = itemType;
-    }*/
 
     public AntiqueCollection getCollection() {
         return collection;
@@ -60,7 +55,6 @@ public class Item extends Entity implements Comparable<Item> {
         this.collection = collection;
     }
 
-    //TODO if no data added to the value field than make it '???' either 'unknown'
     public double getValue() {
         return value;
     }
@@ -69,11 +63,11 @@ public class Item extends Entity implements Comparable<Item> {
         this.value = value;
     }
 
-    public LocalDate getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -97,7 +91,7 @@ public class Item extends Entity implements Comparable<Item> {
     public String toString() {
         return "Item{" +
             "collection='" + collection + '\'' +
-            //", type='" + itemType + '\'' +
+            ", type='" + itemType + '\'' +
             ", value='" + value + '\'' +
             ", createdDate='" + createdDate + '\'' +
             ", dateAquired='" + dateAquired + '\'' +
@@ -111,7 +105,26 @@ public class Item extends Entity implements Comparable<Item> {
         return this.name.compareTo(o.name);
     }
 
-    //TODO add an enum ItemType:
-    // Furniture, Jewelry, Classic cars, Timepieces(clocks/watches), Art, Ceramics and Porcelain,
-    // Textiles(rugs too), Military memorabilia, coins and silver, books and manuscripts
+    public enum ItemType {
+        FURNITURE("Меблі"),
+        JEWELRY("Ювелірні вироби"),
+        CLASSIC_CARS("Класичні автомобілі"),
+        TIMEPIECES("Годинники"),
+        ART("Картини/Фото"),
+        CERAMICS_AND_PORCELAIN("Кераміка та порцеляна"),
+        TEXTILES("Текстиль"),
+        MILITARY_MEMORABILIA("Військові пам'ятні речі"),
+        COINS_AND_SILVER("Монети та срібло"),
+        BOOKS_AND_MANUSCRIPTS("Книги та рукописи");
+
+        private final String name;
+
+        ItemType(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
 }

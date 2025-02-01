@@ -16,12 +16,8 @@ public class PrintUI {
                 printYellowMessage(line);
             }
         } catch (IOException e) {
-            System.out.println("Error reading the file: " + e.getMessage());
+            System.out.println("Помилка при читанні файлу: " + e.getMessage());
         }
-    }
-
-    public static void headerMessage() {
-        printPurpleMessage("\n=== ARTIFACTOR ===");
     }
 
     public static void printHeader(String message) {

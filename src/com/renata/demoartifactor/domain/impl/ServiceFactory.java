@@ -27,9 +27,10 @@ public final class ServiceFactory {
 
         collectionService = new AntiqueCollectionServiceImpl(
             repositoryFactory.getCollectionRepository(),
-            userRepository
+            userRepository, authService
         );
-        itemService = new ItemServiceImpl(repositoryFactory.getItemRepository());
+        itemService = new ItemServiceImpl(repositoryFactory.getItemRepository(), collectionService,
+            authService);
         transactionService = new TransactionServiceImpl(
             repositoryFactory.getTransactionRepository());
         userService = new UserServiceImpl(userRepository);

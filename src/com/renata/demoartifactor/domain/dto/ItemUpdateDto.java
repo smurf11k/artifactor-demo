@@ -2,13 +2,11 @@ package com.renata.demoartifactor.domain.dto;
 
 import com.renata.demoartifactor.persistance.entity.Entity;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
-import com.renata.demoartifactor.persistance.entity.impl.Item.ItemType;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public final class ItemAddDto extends Entity {
+public final class ItemUpdateDto extends Entity {
 
-    public ItemType itemType;
     public String name;
     public AntiqueCollection collection;
     public double value;
@@ -16,11 +14,10 @@ public final class ItemAddDto extends Entity {
     public LocalDate dateAquired;
     public String description;
 
-    public ItemAddDto(UUID id, String name, ItemType itemType, AntiqueCollection collection,
+    public ItemUpdateDto(UUID id, String name, AntiqueCollection collection,
         double value, String createdDate, LocalDate dateAquired, String description) {
         super(id);
         this.name = name;
-        this.itemType = itemType;
         this.collection = collection;
         this.value = value;
         this.createdDate = createdDate;
@@ -28,31 +25,36 @@ public final class ItemAddDto extends Entity {
         this.description = description;
     }
 
-    public String getName() {
+    public String name() {
         return name;
-    }
-
-    public ItemType getItemType() {
-        return itemType;
     }
 
     public AntiqueCollection getCollection() {
         return collection;
     }
 
-    public double getValue() {
+    public double value() {
         return value;
     }
 
-    public String getCreatedDate() {
+    public String createdDate() {
         return createdDate;
     }
 
-    public LocalDate getDateAquired() {
+    public LocalDate dateAquired() {
         return dateAquired;
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
+
+    public AntiqueCollection collection() {
+        return collection;
+    }
+
+    public UUID id() {
+        return super.getId();
+    }
+
 }
