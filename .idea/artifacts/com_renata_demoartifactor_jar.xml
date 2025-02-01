@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="com.renata.demoartifactor:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/com_renata_demoartifactor_jar</output-path>
-    <root id="archive" name="com.renata.demoartifactor.jar">
-      <element id="module-output" name="com.renata.demoartifactor" />
-    </root>
-  </artifact>
-</component>
