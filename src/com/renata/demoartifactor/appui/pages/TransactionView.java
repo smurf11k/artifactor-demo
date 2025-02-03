@@ -14,14 +14,17 @@ public final class TransactionView implements Renderable {
         this.serviceFactory = serviceFactory;
     }
 
-    //TODO show all the transaction history, export it to an .xls file after closing the app
-    // update every time the app is closed if a new transaction was made
-    // only available for admins
-    // only readable (readOnly)
+    public void displayTransactions() {
+        //TODO show all the transaction history, export it to an .xls file after closing the app
+        // update every time the app is closed if a new transaction was made
+        // only available for admins
+        // only readable (readOnly)
+    }
+
 
     @Override
     public void render() throws IOException {
-        printPurpleMessage("\n=== Транзакції ==="); //ваші колекції
-        //displayTransactions();
+        printPurpleMessage("\n=== Транзакції ===");
+        displayTransactions();
     }
 }

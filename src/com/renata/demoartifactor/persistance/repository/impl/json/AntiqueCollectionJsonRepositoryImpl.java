@@ -2,6 +2,7 @@ package com.renata.demoartifactor.persistance.repository.impl.json;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.renata.demoartifactor.domain.exception.EntityNotFoundException;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
 import com.renata.demoartifactor.persistance.entity.impl.User;
 import com.renata.demoartifactor.persistance.repository.contracts.AntiqueCollectionRepository;
@@ -36,22 +37,26 @@ final class AntiqueCollectionJsonRepositoryImpl
     }
 
     @Override
-    public void save(AntiqueCollection collection) {
+    public void update(AntiqueCollection collection) {
         Optional<AntiqueCollection> existingCollection = entities.stream()
             .filter(c -> c.getId().equals(collection.getId()))
             .findFirst();
 
         if (existingCollection.isPresent()) {
-            entities.remove(existingCollection.get());
+            super.update(collection);
+        } else {
+            throw new EntityNotFoundException("Колекція не існує.");
         }
-
-        entities.add(collection);
         JsonRepositoryFactory.getInstance().commit();
     }
 
+
     @Override
-    public void delete(AntiqueCollection collection) {
-        entities.remove(collection);
-        JsonRepositoryFactory.getInstance().commit();
+    public boolean remove(AntiqueCollection collection) {
+        boolean removed = entities.remove(collection);
+        if (removed) {
+            JsonRepositoryFactory.getInstance().commit();
+        }
+        return removed;
     }
 }

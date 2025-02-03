@@ -1,7 +1,9 @@
 package com.renata.demoartifactor.appui.pages;
 
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
 
 import com.renata.demoartifactor.appui.PageFactory;
@@ -29,7 +31,7 @@ public final class AntiqueCollectionsView implements Renderable {
         Set<AntiqueCollection> collectionsSet = antiqueCollectionService.getAll();
 
         if (collectionsSet.isEmpty()) {
-            System.out.println("Немає доступних колекцій.");
+            printRedMessage("Немає доступних колекцій.");
         } else {
             List<AntiqueCollection> collectionsList = collectionsSet.stream()
                 .collect(Collectors.toList());
@@ -41,27 +43,27 @@ public final class AntiqueCollectionsView implements Renderable {
             }
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Виберіть номер колекції для перегляду (0 для повернення): ");
+            System.out.print(
+                printBlue("Виберіть номер колекції для перегляду (0 для повернення): "));
             int choice = Integer.parseInt(scanner.nextLine());
 
             if (choice > 0 && choice <= collectionsList.size()) {
                 AntiqueCollection selectedCollection = collectionsList.get(choice - 1);
                 viewSingleCollection(selectedCollection);
-                //бажаєте переглянути предмети які є в цій колекції (+/-)
-                // if + -> viewItemsInCollection(selectedCollection);
+                viewItemsInCollection(selectedCollection);
             } else if (choice == 0) {
-                System.out.println("Повернення до головного меню.");
+                printYellowMessage("Повернення до головного меню.");
             } else {
-                System.out.println("Невірний номер, спробуйте ще раз.");
+                printRedMessage("Невірний номер, спробуйте ще раз.");
             }
         }
     }
 
     private void viewSingleCollection(AntiqueCollection collection) {
         printYellowMessage("\n=== Деталі колекції ====");
-        System.out.println("Назва: " + collection.getName());
-        System.out.println("Опис: " + collection.getDescription());
-        System.out.println("Власник: " + collection.getOwner().getUsername());
+        System.out.println(printBlue("Назва: ") + collection.getName());
+        System.out.println(printBlue("Опис: ") + collection.getDescription());
+        System.out.println(printBlue("Власник: ") + collection.getOwner().getUsername());
     }
 
     private void viewItemsInCollection(AntiqueCollection collection) {
@@ -71,14 +73,14 @@ public final class AntiqueCollectionsView implements Renderable {
         try {
             itemViewPage.render();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("Помилка: " + e.getMessage());
         }
     }
 
     @Override
     public void render() throws IOException {
         printPurpleMessage("\n=== Доступні колекції ===");
-        printHeader("Назва колекції - Власник");
+        printBlueMessage("Назва колекції - Власник");
         displayAllCollections();
     }
 }

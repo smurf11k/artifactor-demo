@@ -7,6 +7,7 @@ import com.renata.demoartifactor.domain.dto.AntiqueCollectionUpdateDto;
 import com.renata.demoartifactor.domain.exception.EntityNotFoundException;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
 import com.renata.demoartifactor.persistance.entity.impl.User;
+import com.renata.demoartifactor.persistance.exception.EntityArgumentException;
 import com.renata.demoartifactor.persistance.repository.contracts.AntiqueCollectionRepository;
 import com.renata.demoartifactor.persistance.repository.contracts.UserRepository;
 import java.util.List;
@@ -34,7 +35,8 @@ final class AntiqueCollectionServiceImpl extends GenericService<AntiqueCollectio
     public List<AntiqueCollection> getAllByOwner(String username) {
 
         User owner = userRepository.findByUsername(username)
-            .orElseThrow(() -> new EntityNotFoundException("Такого власника колекції не існує"));
+            .orElseThrow(
+                () -> new EntityNotFoundException("Не знайдено такого власника колекції."));
 
         return collectionRepository.findAllByOwner(owner);
     }
@@ -57,18 +59,20 @@ final class AntiqueCollectionServiceImpl extends GenericService<AntiqueCollectio
 
     @Override
     public AntiqueCollection add(AntiqueCollectionAddDto collectionAddDto) {
-        AntiqueCollection collection = new AntiqueCollection(
-            collectionAddDto.getId(),
-            collectionAddDto.name(),
-            collectionAddDto.description(),
-            collectionAddDto.createdDate(),
-            collectionAddDto.owner()
-        );
+        try {
+            AntiqueCollection collection = new AntiqueCollection(
+                collectionAddDto.getId(),
+                collectionAddDto.name(),
+                collectionAddDto.description(),
+                collectionAddDto.createdDate(),
+                collectionAddDto.owner()
+            );
 
-        collectionRepository.add(
-            collection);
-
-        return collection;
+            collectionRepository.add(collection);
+            return collection;
+        } catch (EntityArgumentException e) {
+            throw new IllegalArgumentException(String.join(", ", e.getErrors()));
+        }
     }
 
     @Override
@@ -84,7 +88,7 @@ final class AntiqueCollectionServiceImpl extends GenericService<AntiqueCollectio
         existingCollection.setName(collectionUpdateDto.name());
         existingCollection.setDescription(collectionUpdateDto.description());
 
-        collectionRepository.save(existingCollection);
+        collectionRepository.update(existingCollection);
     }
 
     public AntiqueCollection findCollectionById(List<AntiqueCollection> collections, UUID id) {
@@ -103,8 +107,6 @@ final class AntiqueCollectionServiceImpl extends GenericService<AntiqueCollectio
 
         AntiqueCollection collectionToDelete = findCollectionById(userCollections, id);
 
-        collectionRepository.delete(collectionToDelete);
+        collectionRepository.remove(collectionToDelete);
     }
-
-
 }

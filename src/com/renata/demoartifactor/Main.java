@@ -6,6 +6,7 @@ import com.renata.demoartifactor.persistance.repository.impl.json.JsonRepository
 
 public class Main {
 
+    //TODO javadoc
     public static void main(String[] args) {
         RepositoryFactory repositoryFactory = JsonRepositoryFactory.getInstance();
         ServiceFactory serviceFactory = ServiceFactory.getInstance(

@@ -9,8 +9,5 @@ public interface AntiqueCollectionRepository extends Repository<AntiqueCollectio
 
     List<AntiqueCollection> findAllByOwner(User owner);
 
-    void save(AntiqueCollection collection);
-
-    void delete(AntiqueCollection collection);
-
+    void update(AntiqueCollection collection);
 }

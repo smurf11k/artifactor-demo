@@ -6,20 +6,16 @@ import java.util.UUID;
 
 public class Transaction extends Entity implements Comparable<Transaction> {
 
-    public TransactionType type; //купівля, продаж - make an enum
-    //TODO maybe add some kind of marketplace for buying/selling
+    public TransactionType type;
     public LocalDate date;
-    public Item item; // item used in transaction
-    public double amount; // amount of items used in the transaction
-    public User user; //user who made the transaction
+    public Item item;
+    public User user;
 
-    Transaction(UUID id, TransactionType type, LocalDate date, Item item, double amount,
-        User user) {
+    Transaction(UUID id, TransactionType type, LocalDate date, Item item, User user) {
         super(id);
         this.type = type;
         this.date = date;
         this.item = item;
-        this.amount = amount;
         this.user = user;
     }
 
@@ -39,14 +35,6 @@ public class Transaction extends Entity implements Comparable<Transaction> {
         this.date = date;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
     public User getUser() {
         return user;
     }
@@ -63,23 +51,11 @@ public class Transaction extends Entity implements Comparable<Transaction> {
     // see JsonRepositoryFactory
 
     @Override
-    public String toString() {
-        return "Transaction{" +
-            "type='" + type + '\'' +
-            ", date='" + date + '\'' +
-            ", item='" + item + '\'' +
-            ", amount='" + amount + '\'' +
-            ", user='" + user + '\'' +
-            ", id=" + id +
-            '}';
-    }
-
-    @Override
     public int compareTo(Transaction o) {
         return this.date.compareTo(o.date);
     }
 
-    enum TransactionType {
+    public enum TransactionType {
         SELL("Продаж"),
         BUY("Купівля");
 

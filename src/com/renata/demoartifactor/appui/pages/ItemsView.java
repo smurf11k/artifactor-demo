@@ -1,7 +1,9 @@
 package com.renata.demoartifactor.appui.pages;
 
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
 
 import com.renata.demoartifactor.appui.Renderable;
@@ -28,7 +30,7 @@ public final class ItemsView implements Renderable {
         Set<Item> allItemsSet = itemService.getAll(item -> true);
 
         if (allItemsSet.isEmpty()) {
-            System.out.println("Немає доступних предметів.");
+            printRedMessage("Немає доступних предметів.");
         } else {
             List<Item> allItems = new ArrayList<>(allItemsSet);
 
@@ -40,36 +42,38 @@ public final class ItemsView implements Renderable {
             }
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Виберіть номер предмета для перегляду (0 для повернення): ");
+            System.out.print(
+                printBlue("Виберіть номер предмета для перегляду (0 для повернення): "));
             int choice = Integer.parseInt(scanner.nextLine());
 
             if (choice > 0 && choice <= allItems.size()) {
                 Item selectedItem = allItems.get(choice - 1);
                 viewSingleItem(selectedItem);
             } else if (choice == 0) {
-                System.out.println("Повернення до головного меню.");
+                printYellowMessage("Повернення до головного меню...");
             } else {
-                System.out.println("Невірний номер, спробуйте ще раз.");
+                printRedMessage("Невірний номер, спробуйте ще раз.");
             }
         }
     }
 
     private void viewSingleItem(Item item) {
         printYellowMessage("\n=== Деталі предмета ===");
-        System.out.println("Назва: " + item.getName());
-        System.out.println("Опис: " + item.getDescription());
-        System.out.println("Тип: " + item.getItemType().getName());
-        System.out.println("Вартість: " + item.getValue() + " $");
-        System.out.println("Рік створення: " + item.getCreatedDate());
-        System.out.println("Дата отримання: " + item.getDateAquired());
-        System.out.println("Колекція: " + item.getCollection().getName());
-        System.out.println("Власник колекції: " + item.getCollection().getOwner().getUsername());
+        System.out.println(printBlue("Назва: ") + item.getName());
+        System.out.println(printBlue("Опис: ") + item.getDescription());
+        System.out.println(printBlue("Тип: ") + item.getItemType().getName());
+        System.out.println(printBlue("Вартість: ") + item.getValue() + " $");
+        System.out.println(printBlue("Рік створення: ") + item.getCreatedDate());
+        System.out.println(printBlue("Дата отримання: ") + item.getDateAquired());
+        System.out.println(printBlue("Колекція: ") + item.getCollection().getName());
+        System.out.println(
+            printBlue("Власник колекції: ") + item.getCollection().getOwner().getUsername());
     }
 
     @Override
     public void render() throws IOException {
         printPurpleMessage("\n=== Доступні предмети ===");
-        printHeader("Назва предмету - Колекція - Вартість предмету - Власник");
+        printBlueMessage("Назва предмету - Колекція - Вартість предмету - Власник");
         displayItems();
     }
 }

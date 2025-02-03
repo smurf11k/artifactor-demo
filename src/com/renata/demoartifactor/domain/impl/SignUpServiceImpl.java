@@ -49,6 +49,8 @@ final class SignUpServiceImpl implements SignUpService {
 
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+
             message.setSubject("Код підтвердження");
 
             message.setText("Ваш код підтвердження: " + verificationCode);
@@ -88,12 +90,15 @@ final class SignUpServiceImpl implements SignUpService {
         codeCreationTime = null;
     }
 
-    //TODO uncomment after testing
     public void signUp(UserAddDto userAddDto, Supplier<String> waitForUserInput) {
-        //String verificationCode = generateAndSendVerificationCode(userAddDto.email());
-        //String userInputCode = waitForUserInput.get();
+        if (userService.getByUsername(userAddDto.username()).isPresent()) {
+            throw new SignUpException("Цей логін вже зайнятий, спробуйте інший варіант.");
+        }
 
-        //verifyCode(userInputCode, verificationCode);
+        String verificationCode = generateAndSendVerificationCode(userAddDto.email());
+        String userInputCode = waitForUserInput.get();
+
+        verifyCode(userInputCode, verificationCode);
 
         userService.add(userAddDto);
     }

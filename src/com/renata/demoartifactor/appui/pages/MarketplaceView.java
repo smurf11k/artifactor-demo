@@ -1,6 +1,7 @@
 package com.renata.demoartifactor.appui.pages;
 
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
@@ -47,14 +48,14 @@ public class MarketplaceView implements Renderable {
         }
     }
 
-    private void process(MarketMenu selectedItem) throws IOException {
+    private void process(MarketMenu selectedItem) {
         switch (selectedItem) {
             case VIEW_MARKETPLACE -> showItems();
             case SELL_ITEM -> sellItem();
             case BUY_ITEM -> buyItem();
             case RETURN -> pageFactory.createMainMenuView(userRole);
             case EXIT -> printRedMessage("Вихід з програми...");
-            default -> System.err.println("Неправильний вибір");
+            default -> printRedMessage("Неправильний вибір.");
         }
     }
 
@@ -65,7 +66,7 @@ public class MarketplaceView implements Renderable {
             System.out.println(counter + ". " + item.getName() + " - " + item.getValue() + " $");
             counter++;
         }
-        printHeader("Виберіть номер предмету для перегляду (0 для повернення): ");
+        System.out.print(printBlue("Виберіть номер предмету для перегляду (0 для повернення): "));
         try {
             String choice = reader.readLine();
             int index = Integer.parseInt(choice);
@@ -99,11 +100,11 @@ public class MarketplaceView implements Renderable {
 
     private void printItemDetails(Item item) {
         printYellowMessage("\n=== Деталі предмету ===");
-        System.out.println("Назва: " + item.getName());
-        System.out.println("Тип: " + item.getItemType().getName());
-        System.out.println("Вартість: " + item.getValue() + " $");
-        System.out.println("Рік створення: " + item.getCreatedDate());
-        System.out.println("Дата отримання: " + item.getDateAquired());
+        System.out.println(printBlue("Назва: ") + item.getName());
+        System.out.println(printBlue("Тип: ") + item.getItemType().getName());
+        System.out.println(printBlue("Вартість: ") + item.getValue() + " $");
+        System.out.println(printBlue("Рік створення: ") + item.getCreatedDate());
+        System.out.println(printBlue("Дата отримання: ") + item.getDateAquired());
     }
 
     @Override
@@ -115,7 +116,7 @@ public class MarketplaceView implements Renderable {
             System.out.println("3. " + BUY_ITEM.getName());
             System.out.println("4. " + RETURN.getName());
             System.out.println("0. " + EXIT.getName());
-            printHeader("Зробіть вибір: ");
+            printBlueMessage("Зробіть вибір: ");
 
             String choice = reader.readLine();
             MarketMenu selectedItem;
@@ -167,7 +168,7 @@ public class MarketplaceView implements Renderable {
         }
     }
 
-    private class ItemGenerator {
+    private static class ItemGenerator {
 
         private static final Random RANDOM = new Random();
 
@@ -203,7 +204,6 @@ public class MarketplaceView implements Renderable {
                 Item.ItemType.TEXTILES),
             new AbstractMap.SimpleEntry<>("Колекційна монета 10 грн",
                 Item.ItemType.COINS_AND_SILVER)
-
         };
 
         public static Item generateRandomItem(UUID id) {

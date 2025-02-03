@@ -6,9 +6,7 @@ import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
 import com.renata.demoartifactor.persistance.entity.impl.Item;
 import com.renata.demoartifactor.persistance.repository.contracts.ItemRepository;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 final class ItemJsonRepositoryImpl extends GenericJsonRepository<Item> implements ItemRepository {
@@ -27,25 +25,16 @@ final class ItemJsonRepositoryImpl extends GenericJsonRepository<Item> implement
     }
 
     @Override
-    public void save(Item item) {
-        Optional<Item> existingItem = entities.stream()
-            .filter(i -> i.getId().equals(item.getId()))
-            .findFirst();
-
-        if (existingItem.isPresent()) {
-            entities.remove(existingItem.get());
-        }
-
-        entities.add(item);
-
-        JsonRepositoryFactory.getInstance().commit();
+    public void update(Item item) {
+        super.update(item);
     }
 
     @Override
-    public void delete(UUID itemId) {
-        entities.removeIf(item -> item.getId().equals(itemId));
-        JsonRepositoryFactory.getInstance().commit();
+    public boolean remove(Item item) {
+        boolean removed = entities.removeIf(i -> i.getId().equals(item.getId()));
+        if (removed) {
+            JsonRepositoryFactory.getInstance().commit();
+        }
+        return removed;
     }
-
-
 }

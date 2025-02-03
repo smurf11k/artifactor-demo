@@ -16,20 +16,20 @@ public class PrintUI {
                 printYellowMessage(line);
             }
         } catch (IOException e) {
-            System.out.println("Помилка при читанні файлу: " + e.getMessage());
+            System.err.println("Помилка при читанні файлу: " + e.getMessage());
         }
     }
 
-    public static void printHeader(String message) {
+    public static void printRedMessage(String message) {
+        System.out.println(ColorCodes.RED.getCode() + message + ColorCodes.RESET.getCode());
+    }
+
+    public static void printBlueMessage(String message) {
         System.out.println(ColorCodes.BLUE.getCode() + message + ColorCodes.RESET.getCode());
     }
 
     public static void printGreenMessage(String message) {
         System.out.println(ColorCodes.GREEN.getCode() + message + ColorCodes.RESET.getCode());
-    }
-
-    public static void printRedMessage(String message) {
-        System.out.println(ColorCodes.RED.getCode() + message + ColorCodes.RESET.getCode());
     }
 
     public static void printPurpleMessage(String message) {
@@ -38,6 +38,28 @@ public class PrintUI {
 
     public static void printYellowMessage(String message) {
         System.out.println(ColorCodes.YELLOW.getCode() + message + ColorCodes.RESET.getCode());
+    }
+
+    // strings
+
+    public static String printBlue(String message) {
+        return (ColorCodes.BLUE.getCode() + message + ColorCodes.RESET.getCode());
+    }
+
+    public static String printGreen(String message) {
+        return (ColorCodes.GREEN.getCode() + message + ColorCodes.RESET.getCode());
+    }
+
+    public static String printRed(String message) {
+        return (ColorCodes.RED.getCode() + message + ColorCodes.RESET.getCode());
+    }
+
+    public static String printPurple(String message) {
+        return (ColorCodes.PURPLE.getCode() + message + ColorCodes.RESET.getCode());
+    }
+
+    public static String printYellow(String message) {
+        return (ColorCodes.YELLOW.getCode() + message + ColorCodes.RESET.getCode());
     }
 
     enum ColorCodes {

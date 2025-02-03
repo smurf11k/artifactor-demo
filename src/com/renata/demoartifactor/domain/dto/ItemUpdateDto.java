@@ -7,12 +7,12 @@ import java.util.UUID;
 
 public final class ItemUpdateDto extends Entity {
 
-    public String name;
-    public AntiqueCollection collection;
-    public double value;
-    public String createdDate;
-    public LocalDate dateAquired;
-    public String description;
+    private final String name;
+    private final AntiqueCollection collection;
+    private final double value;
+    private final String createdDate;
+    private final LocalDate dateAquired;
+    private final String description;
 
     public ItemUpdateDto(UUID id, String name, AntiqueCollection collection,
         double value, String createdDate, LocalDate dateAquired, String description) {
@@ -56,5 +56,4 @@ public final class ItemUpdateDto extends Entity {
     public UUID id() {
         return super.getId();
     }
-
 }

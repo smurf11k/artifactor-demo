@@ -5,7 +5,6 @@ import com.renata.demoartifactor.persistance.entity.impl.Item;
 import com.renata.demoartifactor.persistance.repository.Repository;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 import java.util.function.Predicate;
 
 public interface ItemRepository extends Repository<Item> {
@@ -14,7 +13,5 @@ public interface ItemRepository extends Repository<Item> {
 
     List<Item> findByCollection(AntiqueCollection collection);
 
-    void save(Item item);
-
-    void delete(UUID itemId);
+    void update(Item item);
 }

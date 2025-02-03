@@ -1,90 +1,662 @@
 [
   {
-    "name": "Toyota Supra - Tokyo Drift edition",
-    "itemType": "CLASSIC_CARS",
+    "name": "Меч лицаря",
+    "itemType": "MILITARY_MEMORABILIA",
     "collection": {
-      "name": "Японські цікавинки",
-      "description": "Тут зібрані цікаві антикварні предмети з Японії",
-      "createdDate": "01-02-2025",
+      "name": "Старовинні мечі",
+      "description": "Колекція мечів різних епох та країн.",
+      "createdDate": "25-01-2025",
       "owner": {
-        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
-        "role": "ADMIN",
-        "email": "admin@gmail.com",
-        "username": "Admin",
-        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+        "password": "$2a$10$FTTo8yYkpeOGGVkdY/W/BOcLWOt4nMQT8wR/hbUAU.uf7aPLpode6",
+        "role": "GENERAL",
+        "email": "novanomad29@gmail.com",
+        "username": "NovaNomad29",
+        "id": "1abd36e7-be6f-4e66-900f-35fa3648f146"
       },
-      "id": "232e3318-02f1-4891-9573-fe4593e1ee57"
+      "id": "e8b89e3d-74f6-4f95-84eb-62e8bb07d5ea"
     },
-    "value": 5000.0,
-    "createdDate": "2017",
-    "dateAquired": "15-01-2025",
-    "description": "Та сама машина яку використовували на зйомках Форсажу.",
-    "id": "73000844-4f01-41c6-8262-01dbd7d38530"
+    "value": 1200.0,
+    "createdDate": "1450",
+    "dateAquired": "25-01-2025",
+    "description": "Меч, що належав середньовічному лицарю.",
+    "id": "aa2a873f-8375-4483-b253-8858eb0fda47"
   },
   {
-    "name": "Наручний годинник",
-    "itemType": "TIMEPIECES",
+    "name": "Королівський двуручний меч",
+    "itemType": "MILITARY_MEMORABILIA",
     "collection": {
-      "name": "Японські цікавинки",
-      "description": "Тут зібрані цікаві антикварні предмети з Японії",
-      "createdDate": "01-02-2025",
+      "name": "Старовинні мечі",
+      "description": "Колекція мечів різних епох та країн.",
+      "createdDate": "25-01-2025",
       "owner": {
-        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
-        "role": "ADMIN",
-        "email": "admin@gmail.com",
-        "username": "Admin",
-        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+        "password": "$2a$10$FTTo8yYkpeOGGVkdY/W/BOcLWOt4nMQT8wR/hbUAU.uf7aPLpode6",
+        "role": "GENERAL",
+        "email": "novanomad29@gmail.com",
+        "username": "NovaNomad29",
+        "id": "1abd36e7-be6f-4e66-900f-35fa3648f146"
       },
-      "id": "232e3318-02f1-4891-9573-fe4593e1ee57"
+      "id": "e8b89e3d-74f6-4f95-84eb-62e8bb07d5ea"
     },
-    "value": 200.0,
-    "createdDate": "1987",
-    "dateAquired": "19-01-2025",
-    "description": "Наручний годинник з гравіюванням.",
-    "id": "1c1da0bc-a45f-4158-a5e1-4407a0c01552"
+    "value": 2500.0,
+    "createdDate": "1420",
+    "dateAquired": "25-01-2025",
+    "description": "Величний меч королівського двору.",
+    "id": "0acdacb6-dcee-400a-a2c7-d6244d7e642e"
   },
   {
-    "name": "Ваза з котами",
+    "name": "Меч самурая",
+    "itemType": "MILITARY_MEMORABILIA",
+    "collection": {
+      "name": "Старовинні мечі",
+      "description": "Колекція мечів різних епох та країн.",
+      "createdDate": "25-01-2025",
+      "owner": {
+        "password": "$2a$10$FTTo8yYkpeOGGVkdY/W/BOcLWOt4nMQT8wR/hbUAU.uf7aPLpode6",
+        "role": "GENERAL",
+        "email": "novanomad29@gmail.com",
+        "username": "NovaNomad29",
+        "id": "1abd36e7-be6f-4e66-900f-35fa3648f146"
+      },
+      "id": "e8b89e3d-74f6-4f95-84eb-62e8bb07d5ea"
+    },
+    "value": 1800.0,
+    "createdDate": "1500",
+    "dateAquired": "27-01-2025",
+    "description": "Меч з орнаментом, що нагадує про древню добу.",
+    "id": "87cfdb6e-0f6f-40e8-8bbe-4b3433b0fa2d"
+  },
+  {
+    "name": "Амулет Фараона",
+    "itemType": "JEWELRY",
+    "collection": {
+      "name": "Єгипетські амулети",
+      "description": "Колекція амулетів та артефактів Стародавнього Єгипту.",
+      "createdDate": "25-01-2025",
+      "owner": {
+        "password": "$2a$10$UO6jtO/Bg9onTf6EaadevOOdtjL..xgyVLgRr.8MVDaVK2d8IkUzS",
+        "role": "GENERAL",
+        "email": "jane.doe28@gmail.com",
+        "username": "jane_doe28",
+        "id": "6bc5494c-d634-4c6f-a17d-06af5aff90a7"
+      },
+      "id": "19a73d2a-9b0f-4a5d-882c-83f0860c1267"
+    },
+    "value": 800.0,
+    "createdDate": "1300",
+    "dateAquired": "25-01-2025",
+    "description": "Амулет з древньоєгипетськими символами.",
+    "id": "e75bb638-9111-4e11-82f5-7a33adaf553d"
+  },
+  {
+    "name": "Скарбниця Нілу",
+    "itemType": "JEWELRY",
+    "collection": {
+      "name": "Єгипетські амулети",
+      "description": "Колекція амулетів та артефактів Стародавнього Єгипту.",
+      "createdDate": "25-01-2025",
+      "owner": {
+        "password": "$2a$10$UO6jtO/Bg9onTf6EaadevOOdtjL..xgyVLgRr.8MVDaVK2d8IkUzS",
+        "role": "GENERAL",
+        "email": "jane.doe28@gmail.com",
+        "username": "jane_doe28",
+        "id": "6bc5494c-d634-4c6f-a17d-06af5aff90a7"
+      },
+      "id": "19a73d2a-9b0f-4a5d-882c-83f0860c1267"
+    },
+    "value": 950.0,
+    "createdDate": "1350",
+    "dateAquired": "25-01-2025",
+    "description": "Амулет, прикрашений дорогоцінним камінням.",
+    "id": "da89fe01-74fb-4c39-b043-068674cf26f6"
+  },
+  {
+    "name": "Оберіг Анубіса",
+    "itemType": "JEWELRY",
+    "collection": {
+      "name": "Єгипетські амулети",
+      "description": "Колекція амулетів та артефактів Стародавнього Єгипту.",
+      "createdDate": "25-01-2025",
+      "owner": {
+        "password": "$2a$10$UO6jtO/Bg9onTf6EaadevOOdtjL..xgyVLgRr.8MVDaVK2d8IkUzS",
+        "role": "GENERAL",
+        "email": "jane.doe28@gmail.com",
+        "username": "jane_doe28",
+        "id": "6bc5494c-d634-4c6f-a17d-06af5aff90a7"
+      },
+      "id": "19a73d2a-9b0f-4a5d-882c-83f0860c1267"
+    },
+    "value": 1100.0,
+    "createdDate": "1400",
+    "dateAquired": "25-01-2025",
+    "description": "Амулет, що зображує Анубіса, бога мертвих.",
+    "id": "ced9316e-cbc8-4b1b-bbb8-5a9cab91a760"
+  },
+  {
+    "name": "Статуетка Дракона",
     "itemType": "CERAMICS_AND_PORCELAIN",
     "collection": {
-      "name": "Римські вази",
-      "description": "Тут числяться вази які були знайдені при розкопках в Римі.",
-      "createdDate": "01-02-2025",
+      "name": "Китайські порцелянові статуетки",
+      "description": "Рідкісні порцелянові фігурки з Китаю.",
+      "createdDate": "26-01-2025",
       "owner": {
-        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
-        "role": "ADMIN",
-        "email": "admin@gmail.com",
-        "username": "Admin",
-        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+        "password": "$2a$10$nk66wChkk8mrDRbG5o11q.UZ/N5eQ2gn.rWVwZhL4aWrHuC2Eou7C",
+        "role": "GENERAL",
+        "email": "pixelpioneer@gmail.com",
+        "username": "PixelPioneer",
+        "id": "972b9f2d-db02-4c8b-8305-448a75d0864a"
       },
-      "id": "3d49371b-6bba-4bda-9d3b-a48279ea9d2c"
+      "id": "7a0cf3f1-f8c3-44a2-b23f-b3dcaaf1835e"
+    },
+    "value": 600.0,
+    "createdDate": "1700",
+    "dateAquired": "26-01-2025",
+    "description": "Порцелянова статуетка дракона, що є символом сили та мудрості.",
+    "id": "89f6977b-64f7-4e6d-a16b-247b561ef88e"
+  },
+  {
+    "name": "Китайський Будда",
+    "itemType": "CERAMICS_AND_PORCELAIN",
+    "collection": {
+      "name": "Китайські порцелянові статуетки",
+      "description": "Рідкісні порцелянові фігурки з Китаю.",
+      "createdDate": "26-01-2025",
+      "owner": {
+        "password": "$2a$10$nk66wChkk8mrDRbG5o11q.UZ/N5eQ2gn.rWVwZhL4aWrHuC2Eou7C",
+        "role": "GENERAL",
+        "email": "pixelpioneer@gmail.com",
+        "username": "PixelPioneer",
+        "id": "972b9f2d-db02-4c8b-8305-448a75d0864a"
+      },
+      "id": "7a0cf3f1-f8c3-44a2-b23f-b3dcaaf1835e"
+    },
+    "value": 750.0,
+    "createdDate": "1720",
+    "dateAquired": "27-01-2025",
+    "description": "Статуетка Будди, виконана з витонченої порцеляни.",
+    "id": "d852458a-f60f-439d-90fc-d83834a84b96"
+  },
+  {
+    "name": "Порцелянова Фігурка Лотоса",
+    "itemType": "CERAMICS_AND_PORCELAIN",
+    "collection": {
+      "name": "Китайські порцелянові статуетки",
+      "description": "Рідкісні порцелянові фігурки з Китаю.",
+      "createdDate": "26-01-2025",
+      "owner": {
+        "password": "$2a$10$nk66wChkk8mrDRbG5o11q.UZ/N5eQ2gn.rWVwZhL4aWrHuC2Eou7C",
+        "role": "GENERAL",
+        "email": "pixelpioneer@gmail.com",
+        "username": "PixelPioneer",
+        "id": "972b9f2d-db02-4c8b-8305-448a75d0864a"
+      },
+      "id": "7a0cf3f1-f8c3-44a2-b23f-b3dcaaf1835e"
+    },
+    "value": 500.0,
+    "createdDate": "1680",
+    "dateAquired": "13-01-2025",
+    "description": "Маленька статуетка лотоса з детальною розписом.",
+    "id": "d971edff-2d29-4971-bc78-e3d233b9fff9"
+  },
+  {
+    "name": "Вікінгський браслет",
+    "itemType": "JEWELRY",
+    "collection": {
+      "name": "Вікінгські прикраси",
+      "description": "Ювелірні вироби епохи вікінгів.",
+      "createdDate": "26-01-2025",
+      "owner": {
+        "password": "$2a$10$tnve6gCzKKQ5WAEglkhszu1.3qwtc5b36xNigHH6f4tAaskZ1Qpe2",
+        "role": "GENERAL",
+        "email": "oliviasmith@gmail.com",
+        "username": "OliviaSmith",
+        "id": "16b11c5b-1eb3-4bb1-8d5e-a3132d44511d"
+      },
+      "id": "c4f104a8-ff63-4823-9376-2a33d3b6df02"
+    },
+    "value": 400.0,
+    "createdDate": "1000",
+    "dateAquired": "14-01-2025",
+    "description": "Браслет, прикрашений вікінгськими символами.",
+    "id": "91b4895e-8421-4a0c-8946-2d17bb4fabdb"
+  },
+  {
+    "name": "Кулон вікінга",
+    "itemType": "JEWELRY",
+    "collection": {
+      "name": "Вікінгські прикраси",
+      "description": "Ювелірні вироби епохи вікінгів.",
+      "createdDate": "26-01-2025",
+      "owner": {
+        "password": "$2a$10$tnve6gCzKKQ5WAEglkhszu1.3qwtc5b36xNigHH6f4tAaskZ1Qpe2",
+        "role": "GENERAL",
+        "email": "oliviasmith@gmail.com",
+        "username": "OliviaSmith",
+        "id": "16b11c5b-1eb3-4bb1-8d5e-a3132d44511d"
+      },
+      "id": "c4f104a8-ff63-4823-9376-2a33d3b6df02"
+    },
+    "value": 350.0,
+    "createdDate": "1020",
+    "dateAquired": "15-01-2025",
+    "description": "Кулон з рунами і стародавнім дизайном.",
+    "id": "e5935686-44cc-40e6-b70a-ae378004047d"
+  },
+  {
+    "name": "Вухо вікінга",
+    "itemType": "JEWELRY",
+    "collection": {
+      "name": "Вікінгські прикраси",
+      "description": "Ювелірні вироби епохи вікінгів.",
+      "createdDate": "26-01-2025",
+      "owner": {
+        "password": "$2a$10$tnve6gCzKKQ5WAEglkhszu1.3qwtc5b36xNigHH6f4tAaskZ1Qpe2",
+        "role": "GENERAL",
+        "email": "oliviasmith@gmail.com",
+        "username": "OliviaSmith",
+        "id": "16b11c5b-1eb3-4bb1-8d5e-a3132d44511d"
+      },
+      "id": "c4f104a8-ff63-4823-9376-2a33d3b6df02"
+    },
+    "value": 300.0,
+    "createdDate": "1010",
+    "dateAquired": "26-01-2025",
+    "description": "Невелика прикраса, що колись носив воїн.",
+    "id": "7827299d-8826-45ef-a5a1-e4fc09cd9133"
+  },
+  {
+    "name": "Манускрипт Лицаря",
+    "itemType": "BOOKS_AND_MANUSCRIPTS",
+    "collection": {
+      "name": "Середньовічні книги",
+      "description": "Рідкісні манускрипти та книги середньовічної Європи.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$tnve6gCzKKQ5WAEglkhszu1.3qwtc5b36xNigHH6f4tAaskZ1Qpe2",
+        "role": "GENERAL",
+        "email": "oliviasmith@gmail.com",
+        "username": "OliviaSmith",
+        "id": "16b11c5b-1eb3-4bb1-8d5e-a3132d44511d"
+      },
+      "id": "48c5d1b1-8724-4d24-b92d-7b5f6a5211db"
+    },
+    "value": 300.0,
+    "createdDate": "1350",
+    "dateAquired": "17-01-2025",
+    "description": "Старовинний манускрипт з ілюстраціями.",
+    "id": "a0161909-7bc5-42a7-8eab-9ee4a93a3681"
+  },
+  {
+    "name": "Кодекс Середньовіччя",
+    "itemType": "BOOKS_AND_MANUSCRIPTS",
+    "collection": {
+      "name": "Середньовічні книги",
+      "description": "Рідкісні манускрипти та книги середньовічної Європи.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$tnve6gCzKKQ5WAEglkhszu1.3qwtc5b36xNigHH6f4tAaskZ1Qpe2",
+        "role": "GENERAL",
+        "email": "oliviasmith@gmail.com",
+        "username": "OliviaSmith",
+        "id": "16b11c5b-1eb3-4bb1-8d5e-a3132d44511d"
+      },
+      "id": "48c5d1b1-8724-4d24-b92d-7b5f6a5211db"
+    },
+    "value": 450.0,
+    "createdDate": "1400",
+    "dateAquired": "29-01-2025",
+    "description": "Книга з рідкісними історичними записами.",
+    "id": "ae56b763-691d-4299-bfd0-21ee7cf0aa4d"
+  },
+  {
+    "name": "Рукопис Мудрості",
+    "itemType": "BOOKS_AND_MANUSCRIPTS",
+    "collection": {
+      "name": "Середньовічні книги",
+      "description": "Рідкісні манускрипти та книги середньовічної Європи.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$tnve6gCzKKQ5WAEglkhszu1.3qwtc5b36xNigHH6f4tAaskZ1Qpe2",
+        "role": "GENERAL",
+        "email": "oliviasmith@gmail.com",
+        "username": "OliviaSmith",
+        "id": "16b11c5b-1eb3-4bb1-8d5e-a3132d44511d"
+      },
+      "id": "48c5d1b1-8724-4d24-b92d-7b5f6a5211db"
+    },
+    "value": 500.0,
+    "createdDate": "1380",
+    "dateAquired": "18-01-2025",
+    "description": "Рукопис, що містить філософські роздуми.",
+    "id": "95ff76a4-387e-4d2d-82d9-300be5875fe4"
+  },
+  {
+    "name": "Монета Риму",
+    "itemType": "COINS_AND_SILVER",
+    "collection": {
+      "name": "Античні монети",
+      "description": "Монети з різних античних цивілізацій.",
+      "createdDate": "28-01-2025",
+      "owner": {
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
+      },
+      "id": "b936dd2a-bca8-4c5a-97b7-0d286f038bf7"
+    },
+    "value": 100.0,
+    "createdDate": "50",
+    "dateAquired": "20-01-2025",
+    "description": "Антична монета з зображенням імператора.",
+    "id": "7f33665f-8177-4c4f-a280-55abae5b001d"
+  },
+  {
+    "name": "Грецька драхма",
+    "itemType": "COINS_AND_SILVER",
+    "collection": {
+      "name": "Античні монети",
+      "description": "Монети з різних античних цивілізацій.",
+      "createdDate": "28-01-2025",
+      "owner": {
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
+      },
+      "id": "b936dd2a-bca8-4c5a-97b7-0d286f038bf7"
     },
     "value": 120.0,
-    "createdDate": "1785",
-    "dateAquired": "11-01-2025",
-    "description": "Ваза прикрашена орнаментом котів які йдуть один за одним.",
-    "id": "997a5ede-b7d6-4376-88bc-e270fa799e61"
+    "createdDate": "100",
+    "dateAquired": "25-01-2025",
+    "description": "Монета з античної Греції.",
+    "id": "d88f6c1f-99cb-4757-b951-a02db3f81046"
   },
   {
-    "name": "Ваза з квітковим орнаментом",
-    "itemType": "CERAMICS_AND_PORCELAIN",
+    "name": "Монета Карфагену",
+    "itemType": "COINS_AND_SILVER",
     "collection": {
-      "name": "Римські вази",
-      "description": "Тут числяться вази які були знайдені при розкопках в Римі.",
-      "createdDate": "01-02-2025",
+      "name": "Античні монети",
+      "description": "Монети з різних античних цивілізацій.",
+      "createdDate": "28-01-2025",
       "owner": {
-        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
-        "role": "ADMIN",
-        "email": "admin@gmail.com",
-        "username": "Admin",
-        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
       },
-      "id": "3d49371b-6bba-4bda-9d3b-a48279ea9d2c"
+      "id": "b936dd2a-bca8-4c5a-97b7-0d286f038bf7"
     },
-    "value": 175.0,
-    "createdDate": "1878",
-    "dateAquired": "15-01-2025",
-    "description": "Керамічна ваза з ручним оздобленням квітами.",
-    "id": "61e623a6-3705-4cf9-976c-b83a5959abca"
+    "value": 110.0,
+    "createdDate": "80",
+    "dateAquired": "28-01-2025",
+    "description": "Древня монета з Карфагену.",
+    "id": "a968ff84-c2fc-4659-a85f-a15008a76338"
+  },
+  {
+    "name": "Килим Шахів",
+    "itemType": "TEXTILES",
+    "collection": {
+      "name": "Перські килими",
+      "description": "Антикварні килими, виткані в Персії.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
+      },
+      "id": "d57255d2-9251-4f1e-b1cb-bfe7aef4bdf2"
+    },
+    "value": 2000.0,
+    "createdDate": "1600",
+    "dateAquired": "28-01-2025",
+    "description": "Розкішний килим з традиційним візерунком.",
+    "id": "b0bc69a3-5864-44d6-99a2-7920f669ad5f"
+  },
+  {
+    "name": "Килим з геометричним орнаментом",
+    "itemType": "TEXTILES",
+    "collection": {
+      "name": "Перські килими",
+      "description": "Антикварні килими, виткані в Персії.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
+      },
+      "id": "d57255d2-9251-4f1e-b1cb-bfe7aef4bdf2"
+    },
+    "value": 1800.0,
+    "createdDate": "1580",
+    "dateAquired": "29-01-2025",
+    "description": "Килим з характерними перськими візерунками.",
+    "id": "864764a3-8f85-487a-adab-d6e7fa61c591"
+  },
+  {
+    "name": "Антикварний килим",
+    "itemType": "TEXTILES",
+    "collection": {
+      "name": "Перські килими",
+      "description": "Антикварні килими, виткані в Персії.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
+      },
+      "id": "d57255d2-9251-4f1e-b1cb-bfe7aef4bdf2"
+    },
+    "value": 2200.0,
+    "createdDate": "1620",
+    "dateAquired": "30-01-2025",
+    "description": "Килим, що свідчить про високий рівень ремесла.",
+    "id": "6ae01f85-aa02-41dc-bd44-28341ec05e16"
+  },
+  {
+    "name": "Маска племені",
+    "itemType": "ART",
+    "collection": {
+      "name": "Ритуальні маски",
+      "description": "Колекція масок, що використовувались у ритуалах різних народів.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$S5miRXrU4qrz0kl7jrjreOLbIrJdMk2ln4UFMONWBGYAIKPNuJLM2",
+        "role": "GENERAL",
+        "email": "ethan.tech@gmail.com",
+        "username": "ethan_tech",
+        "id": "b506a759-d210-424c-80cd-e64f73161649"
+      },
+      "id": "13414f27-88f6-4c62-8e5f-2bb0b55f5a94"
+    },
+    "value": 500.0,
+    "createdDate": "1900",
+    "dateAquired": "30-01-2025",
+    "description": "Маска, що використовувалась у ритуальних обрядах.",
+    "id": "b9de9401-bf66-4c22-ae3e-a0860aa46389"
+  },
+  {
+    "name": "Маска предка",
+    "itemType": "ART",
+    "collection": {
+      "name": "Ритуальні маски",
+      "description": "Колекція масок, що використовувались у ритуалах різних народів.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$S5miRXrU4qrz0kl7jrjreOLbIrJdMk2ln4UFMONWBGYAIKPNuJLM2",
+        "role": "GENERAL",
+        "email": "ethan.tech@gmail.com",
+        "username": "ethan_tech",
+        "id": "b506a759-d210-424c-80cd-e64f73161649"
+      },
+      "id": "13414f27-88f6-4c62-8e5f-2bb0b55f5a94"
+    },
+    "value": 650.0,
+    "createdDate": "1910",
+    "dateAquired": "30-01-2025",
+    "description": "Ритуальна маска з детальними різьбленнями.",
+    "id": "cecfa80b-6a87-4ca2-a360-10d2507c6d66"
+  },
+  {
+    "name": "Духовна маска",
+    "itemType": "ART",
+    "collection": {
+      "name": "Ритуальні маски",
+      "description": "Колекція масок, що використовувались у ритуалах різних народів.",
+      "createdDate": "29-01-2025",
+      "owner": {
+        "password": "$2a$10$S5miRXrU4qrz0kl7jrjreOLbIrJdMk2ln4UFMONWBGYAIKPNuJLM2",
+        "role": "GENERAL",
+        "email": "ethan.tech@gmail.com",
+        "username": "ethan_tech",
+        "id": "b506a759-d210-424c-80cd-e64f73161649"
+      },
+      "id": "13414f27-88f6-4c62-8e5f-2bb0b55f5a94"
+    },
+    "value": 700.0,
+    "createdDate": "1920",
+    "dateAquired": "30-01-2025",
+    "description": "Маска, яка символізує зв\u0027язок з предками.",
+    "id": "bb74576c-252b-4169-a4ca-58be6989d9cc"
+  },
+  {
+    "name": "Статуетка Афіни",
+    "itemType": "ART",
+    "collection": {
+      "name": "Грецькі статуетки",
+      "description": "Мініатюрні скульптури з античної Греції.",
+      "createdDate": "30-01-2025",
+      "owner": {
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
+      },
+      "id": "e5f472f8-7b85-4720-a3cd-2f57b4ef1eb8"
+    },
+    "value": 550.0,
+    "createdDate": "450 BC",
+    "dateAquired": "29-01-2025",
+    "description": "Мініатюрна статуетка богині мудрості.",
+    "id": "f9797fc9-c69a-478b-82fc-ac3e7cbbe131"
+  },
+  {
+    "name": "Статуетка Гермеса",
+    "itemType": "ART",
+    "collection": {
+      "name": "Грецькі статуетки",
+      "description": "Мініатюрні скульптури з античної Греції.",
+      "createdDate": "30-01-2025",
+      "owner": {
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
+      },
+      "id": "e5f472f8-7b85-4720-a3cd-2f57b4ef1eb8"
+    },
+    "value": 500.0,
+    "createdDate": "400 BC",
+    "dateAquired": "30-01-2025",
+    "description": "Статуетка зображує бога торгівлі.",
+    "id": "2aa555d7-e419-4c4a-b796-1a395dadfb7b"
+  },
+  {
+    "name": "Статуетка Аполлона",
+    "itemType": "ART",
+    "collection": {
+      "name": "Грецькі статуетки",
+      "description": "Мініатюрні скульптури з античної Греції.",
+      "createdDate": "30-01-2025",
+      "owner": {
+        "password": "$2a$10$0GhtWmX5toWc.I2KtQgyfOPPJKKso1c8JaAs7oSJu2vH31/vtFzd2",
+        "role": "GENERAL",
+        "email": "miabrown@gmail.com",
+        "username": "MiaBrown",
+        "id": "ebd88ec4-1789-42f0-bb7f-6efc1b719bd6"
+      },
+      "id": "e5f472f8-7b85-4720-a3cd-2f57b4ef1eb8"
+    },
+    "value": 600.0,
+    "createdDate": "420 BC",
+    "dateAquired": "01-02-2025",
+    "description": "Витончена статуетка сонячного бога.",
+    "id": "0c7d81d4-fd95-4b43-82bf-2ec2faaf0ad6"
+  },
+  {
+    "name": "Обладунки воїна",
+    "itemType": "MILITARY_MEMORABILIA",
+    "collection": {
+      "name": "Самурайські обладунки",
+      "description": "Обладунки самураїв різних періодів історії Японії.",
+      "createdDate": "30-01-2025",
+      "owner": {
+        "password": "$2a$10$mZl.jIRnTZicaWbu1YQC.eUuGNivZvpyhEruc.NKEKUqm9wPWlrvm",
+        "role": "GENERAL",
+        "email": "jackson26@gmail.com",
+        "username": "jackson_d26",
+        "id": "2090230a-e47d-4dce-8027-3a05e884771b"
+      },
+      "id": "92c93d38-05c3-4d26-899c-2eec82be5fc5"
+    },
+    "value": 3000.0,
+    "createdDate": "1600",
+    "dateAquired": "01-02-2025",
+    "description": "Цілі комплект самурайських обладунків.",
+    "id": "136565be-1ec2-45c9-9446-5ce2c040b8b8"
+  },
+  {
+    "name": "Шолом самурая",
+    "itemType": "MILITARY_MEMORABILIA",
+    "collection": {
+      "name": "Самурайські обладунки",
+      "description": "Обладунки самураїв різних періодів історії Японії.",
+      "createdDate": "30-01-2025",
+      "owner": {
+        "password": "$2a$10$mZl.jIRnTZicaWbu1YQC.eUuGNivZvpyhEruc.NKEKUqm9wPWlrvm",
+        "role": "GENERAL",
+        "email": "jackson26@gmail.com",
+        "username": "jackson_d26",
+        "id": "2090230a-e47d-4dce-8027-3a05e884771b"
+      },
+      "id": "92c93d38-05c3-4d26-899c-2eec82be5fc5"
+    },
+    "value": 1500.0,
+    "createdDate": "1590",
+    "dateAquired": "01-02-2025",
+    "description": "Шолом з оздобленням традиційного стилю.",
+    "id": "04f95fea-edb8-4bb7-83d8-9e8321de4bc2"
+  },
+  {
+    "name": "Щит воїна",
+    "itemType": "MILITARY_MEMORABILIA",
+    "collection": {
+      "name": "Самурайські обладунки",
+      "description": "Обладунки самураїв різних періодів історії Японії.",
+      "createdDate": "30-01-2025",
+      "owner": {
+        "password": "$2a$10$mZl.jIRnTZicaWbu1YQC.eUuGNivZvpyhEruc.NKEKUqm9wPWlrvm",
+        "role": "GENERAL",
+        "email": "jackson26@gmail.com",
+        "username": "jackson_d26",
+        "id": "2090230a-e47d-4dce-8027-3a05e884771b"
+      },
+      "id": "92c93d38-05c3-4d26-899c-2eec82be5fc5"
+    },
+    "value": 1200.0,
+    "createdDate": "1585",
+    "dateAquired": "01-02-2025",
+    "description": "Щит, що свідчить про давні битви.",
+    "id": "9eee5452-d085-4e60-bf7b-91fb819efc6f"
   }
 ]

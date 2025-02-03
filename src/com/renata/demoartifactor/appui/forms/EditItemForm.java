@@ -1,10 +1,9 @@
 package com.renata.demoartifactor.appui.forms;
 
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
-import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
-import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
 
 import com.renata.demoartifactor.appui.Renderable;
 import com.renata.demoartifactor.domain.contract.AntiqueCollectionService;
@@ -36,74 +35,75 @@ public final class EditItemForm implements Renderable {
         List<AntiqueCollection> collections = antiqueCollectionService.getAuthorizedUserCollections();
 
         if (collections.isEmpty()) {
-            printRedMessage("У вас немає колекцій для редагування.");
+            System.err.println("У вас немає колекцій для редагування.");
             return;
         }
 
-        printHeader("Доступні колекції для редагування:");
+        printBlueMessage("Доступні колекції для редагування:");
         for (int i = 0; i < collections.size(); i++) {
             System.out.printf("%d. %s%n", i + 1, collections.get(i).getName());
         }
-        printHeader("Виберіть номер колекції: ");
+        System.out.print(printBlue("Виберіть номер колекції: "));
         int collectionChoice = Integer.parseInt(reader.readLine());
         AntiqueCollection collection = collections.get(collectionChoice - 1);
 
         List<Item> userItems = itemService.getAllByCollection(collection);
 
         if (userItems.isEmpty()) {
-            printRedMessage("У вас немає предметів в цій колекції.");
+            System.err.println("У вас немає предметів в цій колекції.");
             return;
         }
 
-        printHeader("Доступні предмети для редагування:");
+        printBlueMessage("Доступні предмети для редагування:");
         for (int i = 0; i < userItems.size(); i++) {
             System.out.printf("%d. %s%n", i + 1, userItems.get(i).getName());
         }
-        printHeader("Виберіть номер предмета: ");
+        System.out.print(printBlue("Виберіть номер предмета: "));
         int itemChoice = Integer.parseInt(reader.readLine());
         Item item = userItems.get(itemChoice - 1);
 
-        printYellowMessage("Редагування предмета: " + item.getName());
+        System.out.println(printBlue("Редагування предмета: ") + item.getName());
 
-        printHeader("Нова назва предмета (залиште порожнім для відміни): ");
+        printBlueMessage("Нова назва предмета (залиште порожнім для відміни): ");
         String newName = reader.readLine();
         if (!newName.isEmpty()) {
             item.setName(newName);
         }
 
-        printHeader("Новий опис предмета (залиште порожнім для відміни): ");
+        System.out.print(printBlue("Новий опис предмета (залиште порожнім для відміни): "));
         String newDescription = reader.readLine();
         if (!newDescription.isEmpty()) {
             item.setDescription(newDescription);
         }
 
-        printHeader("Нова вартість предмета (залиште порожнім для відміни): ");
+        System.out.print(printBlue("Нова вартість предмета (залиште порожнім для відміни): "));
         String newValue = reader.readLine();
         if (!newValue.isEmpty()) {
             item.setValue(Double.parseDouble(newValue));
         }
 
-        printHeader("Нова дата створення предмета (yyyy) (залиште порожнім для відміни): ");
+        System.out.print(
+            printBlue("Нова дата створення предмета (yyyy) (залиште порожнім для відміни): "));
         String newCreatedDate = reader.readLine();
         if (!newCreatedDate.isEmpty()) {
             item.setCreatedDate(newCreatedDate);
         }
 
-        printHeader("Нова дата отримання предмета (yyyy-mm-dd) (залиште порожнім для відміни): ");
+        System.out.print(printBlue(
+            "Нова дата отримання предмета (yyyy-mm-dd) (залиште порожнім для відміни): "));
         String newDateAquired = reader.readLine();
         if (!newDateAquired.isEmpty()) {
             item.setDateAquired(LocalDate.parse(newDateAquired));
         }
 
-        printHeader("Ви хочете змінити колекцію предмета? (+/-): ");
+        System.out.print(printBlue("Ви хочете змінити колекцію предмета? (+/-): "));
         String changeCollectionChoice = reader.readLine();
         if (changeCollectionChoice.equalsIgnoreCase("+")) {
-            // Вибір нової колекції
-            printHeader("Виберіть нову колекцію для предмета:");
+            printBlueMessage("Виберіть нову колекцію для предмета:");
             for (int i = 0; i < collections.size(); i++) {
                 System.out.printf("%d. %s%n", i + 1, collections.get(i).getName());
             }
-            printHeader("Виберіть номер нової колекції: ");
+            System.out.print(printBlue("Виберіть номер нової колекції: "));
             int collectionChoiceNew = Integer.parseInt(reader.readLine());
             item.setCollection(collections.get(collectionChoiceNew - 1));
         }
@@ -124,14 +124,13 @@ public final class EditItemForm implements Renderable {
         printGreenMessage("Предмет успішно оновлено!");
     }
 
-
     @Override
     public void render() throws IOException {
         printPurpleMessage("\n=== Редагування предмета ===");
         try {
             processItemEditing();
         } catch (IOException e) {
-            System.err.println("Помилка при введенні даних: " + e.getMessage());
+            System.err.println("Помилка: " + e.getMessage());
         }
     }
 }

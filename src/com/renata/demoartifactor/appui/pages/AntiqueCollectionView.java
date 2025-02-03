@@ -1,7 +1,8 @@
 package com.renata.demoartifactor.appui.pages;
 
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
 
 import com.renata.demoartifactor.appui.PageFactory;
@@ -32,7 +33,7 @@ public final class AntiqueCollectionView implements Renderable {
             currentUser.getUsername());
 
         if (collections.isEmpty()) {
-            System.out.println("У вас ще немає колекцій.");
+            printRedMessage("У вас ще немає колекцій.");
         } else {
             for (int i = 0; i < collections.size(); i++) {
                 AntiqueCollection collection = collections.get(i);
@@ -41,32 +42,33 @@ public final class AntiqueCollectionView implements Renderable {
             }
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Виберіть номер колекції для перегляду (0 для повернення): ");
+            System.out.print(
+                printBlue("Виберіть номер колекції для перегляду (0 для повернення): "));
             int choice = Integer.parseInt(scanner.nextLine());
 
             if (choice > 0 && choice <= collections.size()) {
                 AntiqueCollection selectedCollection = collections.get(choice - 1);
                 viewSingleCollection(selectedCollection);
             } else if (choice == 0) {
-                System.out.println("Повернення до головного меню.");
+                printYellowMessage("Повернення до головного меню...");
             } else {
-                System.out.println("Невірний номер, спробуйте ще раз.");
+                printRedMessage("Невірний номер, спробуйте ще раз.");
             }
         }
     }
 
     private void viewSingleCollection(AntiqueCollection collection) {
-        printHeader("\n==== Деталі колекції ====");
-        System.out.println("Назва: " + collection.getName());
-        System.out.println("Опис: " + collection.getDescription());
-        printYellowMessage("Предмети колекції:");
+        printYellowMessage("\n==== Деталі колекції ====");
+        System.out.println(printBlue("Назва: ") + collection.getName());
+        System.out.println(printBlue("Опис: ") + collection.getDescription());
+        printYellowMessage("\n=== Предмети колекції ===");
 
         PageFactory pageFactory = new PageFactory(serviceFactory);
         Renderable itemViewPage = pageFactory.createItemView(collection);
         try {
             itemViewPage.render();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("Помилка: " + e.getMessage());
         }
     }
 

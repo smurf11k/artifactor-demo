@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 import org.mindrot.bcrypt.BCrypt;
@@ -35,7 +36,7 @@ final class AuthServiceImpl implements AuthService {
 
         User foundedUser = userRepository.findByUsername(username)
             .orElseThrow(() -> new AuthException("Користувача з таким логіном не знайдено."));
-        
+
         if (!BCrypt.checkpw(password, foundedUser.getPassword())) {
             throw new AuthException("Невірний пароль.");
         }
@@ -79,8 +80,10 @@ final class AuthServiceImpl implements AuthService {
 
     private void loadSession() {
         try {
-            if (Files.exists(Paths.get(SESSION_FILE))) {
-                String data = Files.readString(Paths.get(SESSION_FILE)).trim();
+
+            Path sessionFilePath = Paths.get(SESSION_FILE);
+            if (Files.exists(sessionFilePath)) {
+                String data = Files.readString(sessionFilePath).trim();
                 String[] parts = data.split(":");
 
                 if (parts.length != 2) {

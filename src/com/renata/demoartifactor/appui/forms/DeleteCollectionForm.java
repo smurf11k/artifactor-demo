@@ -1,7 +1,8 @@
 package com.renata.demoartifactor.appui.forms;
 
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
@@ -39,6 +40,7 @@ public final class DeleteCollectionForm implements Renderable {
         if (collections.isEmpty()) {
             printRedMessage("У вас ще немає колекцій.");
         } else {
+            printBlueMessage("Доступні колекції для видалення:");
             for (int i = 0; i < collections.size(); i++) {
                 AntiqueCollection collection = collections.get(i);
                 System.out.printf("%d. %s - %s%n", i + 1, collection.getName(),
@@ -46,7 +48,8 @@ public final class DeleteCollectionForm implements Renderable {
             }
 
             Scanner scanner = new Scanner(System.in);
-            printHeader("Виберіть номер колекції для видалення (0 для повернення): ");
+            System.out.print(
+                printBlue("Виберіть номер колекції для видалення (0 для повернення): "));
             int choice;
 
             try {
@@ -59,6 +62,16 @@ public final class DeleteCollectionForm implements Renderable {
             if (choice > 0 && choice <= collections.size()) {
                 AntiqueCollection selectedCollection = collections.get(choice - 1);
 
+                printYellowMessage(
+                    "Увага! Видалення колекції призведе до видалення всіх її предметів.");
+                System.out.print(printBlue("Ви впевнені, що хочете видалити цю колекцію? (+/-): "));
+                String confirmation = scanner.nextLine().trim().toLowerCase();
+
+                if (!confirmation.equals("+")) {
+                    printRedMessage("Видалення скасовано.");
+                    return;
+                }
+
                 List<Item> itemsToDelete = itemService.getAllByCollection(selectedCollection);
                 for (Item item : itemsToDelete) {
                     itemService.delete(item.getId());
@@ -69,7 +82,7 @@ public final class DeleteCollectionForm implements Renderable {
 
                 printGreenMessage("Колекцію та всі її предмети успішно видалено!");
             } else if (choice == 0) {
-                printYellowMessage("Повернення до головного меню.");
+                printYellowMessage("Повернення до головного меню...");
             } else {
                 printRedMessage("Невірний номер, спробуйте ще раз.");
             }

@@ -1,5 +1,7 @@
 package com.renata.demoartifactor.appui.forms;
 
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 
 import com.renata.demoartifactor.appui.Renderable;
@@ -30,10 +32,10 @@ public final class AddCollectionForm implements Renderable {
         AuthService authService = serviceFactory.getAuthService();
         User currentUser = authService.getUser();
 
-        System.out.print("Впишіть назву колекції: ");
+        System.out.print(printBlue("Впишіть назву колекції: "));
         String name = reader.readLine();
 
-        System.out.print("Впишіть опис колекції: ");
+        System.out.print(printBlue("Впишіть опис колекції: "));
         String description = reader.readLine();
 
         try {
@@ -48,7 +50,7 @@ public final class AddCollectionForm implements Renderable {
             antiqueCollectionService.add(collectionAddDto);
             JsonRepositoryFactory.getInstance().commit();
 
-            System.out.println("Колекція успішно створена та збережена у JSON!");
+            printGreenMessage("Колекція успішно створена та збережена у JSON!");
         } catch (IllegalArgumentException e) {
             System.err.println("Помилка: " + e.getMessage());
         }

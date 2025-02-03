@@ -10,10 +10,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
-import org.apache.commons.lang3.NotImplementedException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -31,9 +31,8 @@ final class UserServiceImpl extends GenericService<User> implements UserService 
     }
 
     @Override
-    public User getByUsername(String username) {
-        return userRepository.findByUsername(username)
-            .orElseThrow(() -> new EntityNotFoundException("Такого користувача не існує."));
+    public Optional<User> getByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -50,13 +49,6 @@ final class UserServiceImpl extends GenericService<User> implements UserService 
     @Override
     public Set<User> getAll(Predicate<User> filter) {
         return new TreeSet<>(userRepository.findAll(filter));
-    }
-
-    @Override
-    public User add(User entity) {
-        throw new NotImplementedException(
-            "Помилка архітектури, так як ми не використовували DTO та маппінг. "
-                + "Прошу використовувати User add(UserAddDto userAddDto) версію.");
     }
 
     @Override

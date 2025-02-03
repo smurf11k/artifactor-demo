@@ -1,10 +1,11 @@
 package com.renata.demoartifactor.appui.forms;
 
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
-import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printYellow;
 
 import com.renata.demoartifactor.appui.Renderable;
 import com.renata.demoartifactor.domain.contract.AntiqueCollectionService;
@@ -34,15 +35,15 @@ public final class DeleteItemForm implements Renderable {
         List<AntiqueCollection> collections = antiqueCollectionService.getAuthorizedUserCollections();
 
         if (collections.isEmpty()) {
-            printRedMessage("У вас немає колекцій для видалення.");
+            printRedMessage("У вас немає колекцій для видалення предметів.");
             return;
         }
 
-        printHeader("Доступні колекції для видалення:");
+        printBlueMessage("Доступні колекції для видалення предмету:");
         for (int i = 0; i < collections.size(); i++) {
             System.out.printf("%d. %s%n", i + 1, collections.get(i).getName());
         }
-        printHeader("Виберіть номер колекції: ");
+        System.out.print(printBlue("Виберіть номер колекції з якої хочете видалити предмет: "));
         int collectionChoice = Integer.parseInt(reader.readLine());
         AntiqueCollection collection = collections.get(collectionChoice - 1);
 
@@ -53,19 +54,19 @@ public final class DeleteItemForm implements Renderable {
             return;
         }
 
-        printHeader("Доступні предмети для видалення:");
+        printBlueMessage("Доступні предмети для видалення:");
         for (int i = 0; i < userItems.size(); i++) {
             System.out.printf("%d. %s%n", i + 1, userItems.get(i).getName());
         }
-        printHeader("Виберіть номер предмета для видалення: ");
+        System.out.print(printBlue("Виберіть номер предмета для видалення: "));
         int itemChoice = Integer.parseInt(reader.readLine());
         Item item = userItems.get(itemChoice - 1);
 
-        printYellowMessage("Видалення предмета: " + item.getName());
+        System.out.println(printYellow("Видалення предмета: ") + item.getName());
 
-        printHeader("Ви впевнені, що хочете видалити цей предмет? (так/ні): ");
+        System.out.print(printBlue("Ви впевнені, що хочете видалити цей предмет? (+/-): "));
         String confirmation = reader.readLine();
-        if (confirmation.equalsIgnoreCase("так")) {
+        if (confirmation.equalsIgnoreCase("+")) {
             itemService.delete(item.getId());
             JsonRepositoryFactory.getInstance().commit();
             printGreenMessage("Предмет успішно видалено!");

@@ -2,6 +2,7 @@ package com.renata.demoartifactor.persistance.entity.impl;
 
 import com.renata.demoartifactor.persistance.entity.Entity;
 import com.renata.demoartifactor.persistance.entity.ErrorTemplates;
+import com.renata.demoartifactor.persistance.exception.EntityArgumentException;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -10,22 +11,25 @@ public class Item extends Entity implements Comparable<Item> {
     public String name;
     public ItemType itemType;
     public AntiqueCollection collection;
-    public double value; // approximate price
-    public String createdDate; // year (approximate date)
+    public double value;
+    public String createdDate;
     public LocalDate dateAquired;
     public String description;
 
     public Item(UUID id, String name, ItemType itemType, AntiqueCollection collection,
         double value, String createdDate, LocalDate dateAquired, String description) {
         super(id);
-        this.name = name;
-        this.itemType = itemType; // user chooses from existing categories
-        this.collection = collection; // choose from existing collections of the authorized user
+        setName(name);
+        this.itemType = itemType;
+        this.collection = collection;
         this.value = value;
-        this.createdDate = createdDate;
-        this.dateAquired = dateAquired; // maybe skip, because the transaction contains this data
-        // (however only the admin can see the transactions)
+        setCreatedDate(createdDate);
+        setDateAquired(dateAquired);
         this.description = description;
+
+        if (!this.isValid()) {
+            throw new EntityArgumentException(errors);
+        }
     }
 
     public String getName() {
@@ -41,7 +45,6 @@ public class Item extends Entity implements Comparable<Item> {
 
         this.name = name;
     }
-
 
     public ItemType getItemType() {
         return itemType;
@@ -76,6 +79,15 @@ public class Item extends Entity implements Comparable<Item> {
     }
 
     public void setDateAquired(LocalDate dateAquired) {
+        final String templateName = "дати";
+
+        if (name.isBlank()) {
+            errors.add(ErrorTemplates.REQUIRED.getTemplate().formatted(templateName));
+        }
+
+        if (dateAquired.isAfter(LocalDate.now())) {
+            errors.add(ErrorTemplates.DATE.getTemplate().formatted(templateName));
+        }
         this.dateAquired = dateAquired;
     }
 
@@ -85,19 +97,6 @@ public class Item extends Entity implements Comparable<Item> {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-            "collection='" + collection + '\'' +
-            ", type='" + itemType + '\'' +
-            ", value='" + value + '\'' +
-            ", createdDate='" + createdDate + '\'' +
-            ", dateAquired='" + dateAquired + '\'' +
-            ", description='" + description + '\'' +
-            ", id=" + id +
-            '}';
     }
 
     @Override

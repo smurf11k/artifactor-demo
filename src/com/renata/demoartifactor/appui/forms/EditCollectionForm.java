@@ -1,7 +1,8 @@
 package com.renata.demoartifactor.appui.forms;
 
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
@@ -40,39 +41,42 @@ public final class EditCollectionForm implements Renderable {
         if (collections.isEmpty()) {
             printRedMessage("У вас ще немає колекцій.");
         } else {
+            printBlueMessage("Доступні колекції для редагування:");
             for (int i = 0; i < collections.size(); i++) {
                 AntiqueCollection collection = collections.get(i);
                 System.out.printf("%d. %s - %s%n", i + 1, collection.getName(),
                     collection.getDescription());
             }
 
-            // Option to select collection for editing
             Scanner scanner = new Scanner(System.in);
-            printHeader("Виберіть номер колекції для редагування (0 для повернення): ");
+            System.out.print(
+                printBlue("Виберіть номер колекції для редагування (0 для повернення): "));
             int choice = Integer.parseInt(scanner.nextLine());
 
             if (choice > 0 && choice <= collections.size()) {
                 AntiqueCollection selectedCollection = collections.get(choice - 1);
                 processCollectionEditing(selectedCollection);
             } else if (choice == 0) {
-                printYellowMessage("Повернення до головного меню.");
+                printYellowMessage("Повернення до головного меню...");
             } else {
-                System.err.println("Невірний номер, спробуйте ще раз.");
+                printRedMessage("Невірний номер, спробуйте ще раз.");
             }
         }
     }
 
     private void processCollectionEditing(AntiqueCollection collection) {
         try {
-            printGreenMessage("Редагування колекції: " + collection.getName());
+            System.out.println(printBlue("Редагування колекції: ") + collection.getName());
 
-            printHeader("Введіть нову назву колекції (залиште порожнім для відміни): ");
+            System.out.print(
+                printBlue("Введіть нову назву колекції (залиште порожнім для відміни): "));
             String newName = reader.readLine();
             if (!newName.isEmpty()) {
                 collection.setName(newName);
             }
 
-            printHeader("Введіть новий опис колекції (залиште порожнім для відміни): ");
+            System.out.print(
+                printBlue("Введіть новий опис колекції (залиште порожнім для відміни): "));
             String newDescription = reader.readLine();
             if (!newDescription.isEmpty()) {
                 collection.setDescription(newDescription);
@@ -98,7 +102,7 @@ public final class EditCollectionForm implements Renderable {
 
     @Override
     public void render() throws IOException {
-        printPurpleMessage("\n=== Редагування колекції ===");
+        printPurpleMessage("\n=== Редагування колекцій ===");
         displayUserCollections();
     }
 }

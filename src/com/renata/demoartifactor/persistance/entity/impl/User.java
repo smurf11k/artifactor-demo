@@ -3,7 +3,6 @@ package com.renata.demoartifactor.persistance.entity.impl;
 import com.renata.demoartifactor.persistance.entity.Entity;
 import com.renata.demoartifactor.persistance.entity.ErrorTemplates;
 import com.renata.demoartifactor.persistance.exception.EntityArgumentException;
-import java.util.Map;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
@@ -112,39 +111,17 @@ public class User
     }
 
     public enum Role {
-        ADMIN("admin", Map.of(
-            EntityName.USER, new Permission(true, true, true, true),
-            EntityName.TRANSACTION, new Permission(true, true, true, true),
-            EntityName.COLLECTION, new Permission(true, true, true, true),
-            EntityName.ITEM, new Permission(true, true, true, true))),
-        GENERAL("general", Map.of(
-            EntityName.USER, new Permission(false, false, false, true),
-            EntityName.TRANSACTION, new Permission(true, false, false, true),
-            EntityName.COLLECTION, new Permission(true, true, false, true),
-            EntityName.ITEM, new Permission(true, true, false, true)));
+        ADMIN("admin"),
+        GENERAL("general");
 
         private final String name;
-        private final Map<EntityName, Permission> permissions;
 
-        Role(String name, Map<EntityName, Permission> permissions) {
+        Role(String name) {
             this.name = name;
-            this.permissions = permissions;
         }
 
         public String getName() {
             return name;
         }
-
-        public Map<EntityName, Permission> getPermissions() {
-            return permissions;
-        }
-
-        public enum EntityName {USER, TRANSACTION, COLLECTION, ITEM}
-
-        public record Permission(boolean canAdd, boolean canEdit, boolean canDelete,
-                                 boolean canRead) {
-
-        }
     }
-
 }

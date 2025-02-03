@@ -1,7 +1,7 @@
 package com.renata.demoartifactor.appui.pages;
 
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.pages.AuthView.AuthMenu.EXIT;
@@ -37,9 +37,10 @@ public final class AuthView implements Renderable {
 
         switch (selectedItem) {
             case SIGN_IN -> {
-                printHeader("Впишіть ваш логін: ");
+                System.out.print(printBlue("Впишіть ваш логін: "));
                 String username = reader.readLine();
-                printHeader("Впишіть ваш пароль: ");
+
+                System.out.print(printBlue("Впишіть ваш пароль: "));
                 String password = reader.readLine();
 
                 try {
@@ -57,16 +58,17 @@ public final class AuthView implements Renderable {
                 }
             }
             case SIGN_UP -> {
+
+                System.out.print(printBlue("Впишіть ваш логін: "));
+                String username = reader.readLine();
+
+                System.out.print(printBlue("Впишіть ваш пароль: "));
+                String password = reader.readLine();
+
+                System.out.print(printBlue("Вкажіть вашу електронну пошту: "));
+                String email = reader.readLine();
+
                 try {
-                    printHeader("Впишіть ваш логін: ");
-                    String username = reader.readLine();
-
-                    printHeader("Впишіть ваш пароль: ");
-                    String password = reader.readLine();
-
-                    printHeader("Вкажіть вашу електронну пошту: ");
-                    String email = reader.readLine();
-
                     UserAddDto userAddDto = new UserAddDto(
                         UUID.randomUUID(),
                         username,
@@ -75,7 +77,7 @@ public final class AuthView implements Renderable {
                     );
 
                     signUpService.signUp(userAddDto, () -> {
-                        printHeader("Введіть код підтвердження з вашої пошти: ");
+                        System.out.print(printBlue("Введіть код підтвердження з вашої пошти: "));
                         try {
                             return reader.readLine();
                         } catch (IOException e) {
@@ -95,11 +97,11 @@ public final class AuthView implements Renderable {
                         printRedMessage("Автоматична аутентифікація не вдалася.");
                     }
                 } catch (SignUpException e) {
-                    System.err.println("Помилка реєстрації: " + e.getMessage());
+                    System.err.println("Помилка реєстрації: \n" + e.getMessage());
                 }
             }
             case EXIT -> printRedMessage("Вихід з програми...");
-            default -> System.err.println("Неправильний вибір");
+            default -> printRedMessage("Неправильний вибір");
 
         }
     }
@@ -107,11 +109,11 @@ public final class AuthView implements Renderable {
     @Override
     public void render() throws IOException {
         while (true) {
-            printPurpleMessage("=== Меню ===");
+            printPurpleMessage("\n\n=== Меню ===");
             System.out.println("1. " + SIGN_IN.getName());
             System.out.println("2. " + SIGN_UP.getName());
             System.out.println("0. " + EXIT.getName());
-            printHeader("Зробіть вибір: ");
+            System.out.print(printBlue("Зробіть вибір: "));
 
             String choice = reader.readLine();
             AuthMenu selectedItem;
@@ -132,7 +134,7 @@ public final class AuthView implements Renderable {
 
                 process(selectedItem);
             } catch (IllegalArgumentException e) {
-                System.err.println(e.getMessage());
+                System.err.println("Помилка:" + e.getMessage());
             }
         }
     }

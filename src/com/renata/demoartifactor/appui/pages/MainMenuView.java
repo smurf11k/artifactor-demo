@@ -1,8 +1,9 @@
 package com.renata.demoartifactor.appui.pages;
 
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
 import static com.renata.demoartifactor.appui.pages.MainMenuView.MainMenu.ADD_COLLECTION;
 import static com.renata.demoartifactor.appui.pages.MainMenuView.MainMenu.ADD_ITEM;
 import static com.renata.demoartifactor.appui.pages.MainMenuView.MainMenu.DELETE_COLLECTION;
@@ -64,19 +65,19 @@ public final class MainMenuView implements Renderable {
             case VIEW_TRANSACTIONS -> pageFactory.createTransactionView().render();
 
             case LOG_OUT -> {
-                printRedMessage("Вихід з акаунту...");
+                printYellowMessage("Вихід з акаунту...");
                 serviceFactory.getAuthService().logout();
                 pageFactory.createAuthView().render();
             }
             case EXIT -> printRedMessage("Вихід з програми...");
-            default -> System.err.println("Неправильний вибір");
+            default -> printRedMessage("Неправильний вибір");
         }
     }
 
     @Override
     public void render() throws IOException {
         while (true) {
-            printPurpleMessage("\n=== Головне меню ===");
+            printPurpleMessage("\n\n=== Головне меню ===");
             System.out.println("1. " + VIEW_COLLECTION.getName());
             System.out.println("2. " + ADD_COLLECTION.getName());
             System.out.println("3. " + EDIT_COLLECTION.getName());
@@ -92,7 +93,7 @@ public final class MainMenuView implements Renderable {
                 System.out.println("12. " + VIEW_TRANSACTIONS.getName());
             }
             System.out.println("0. " + EXIT.getName());
-            printHeader("Зробіть вибір: ");
+            System.out.print(printBlue("Зробіть вибір: "));
 
             String choice = reader.readLine();
             MainMenu selectedItem;

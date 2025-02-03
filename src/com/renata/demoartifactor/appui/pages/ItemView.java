@@ -1,6 +1,6 @@
 package com.renata.demoartifactor.appui.pages;
 
-import static com.renata.demoartifactor.appui.PrintUI.printHeader;
+import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
 
@@ -36,14 +36,15 @@ public final class ItemView implements Renderable {
             }
 
             Scanner scanner = new Scanner(System.in);
-            printHeader("Виберіть номер предмета для перегляду (0 для повернення): ");
+            System.out.print(
+                printBlue("Виберіть номер предмета для перегляду (0 для повернення): "));
             int choice = Integer.parseInt(scanner.nextLine());
 
             if (choice > 0 && choice <= items.size()) {
                 Item selectedItem = items.get(choice - 1);
                 viewSingleItem(selectedItem);
             } else if (choice == 0) {
-                printYellowMessage("Повернення до колекцій.");
+                printYellowMessage("Повернення до колекцій...");
             } else {
                 printRedMessage("Невірний номер, спробуйте ще раз.");
             }
@@ -51,14 +52,13 @@ public final class ItemView implements Renderable {
     }
 
     public void viewSingleItem(Item item) {
-        printYellowMessage("=== Деталі предмета ====");
-        System.out.println("Назва: " + item.getName());
-        System.out.println("Опис: " + item.getDescription());
-        System.out.println("Тип: " + item.getItemType().getName());
-        System.out.println("Вартість: " + item.getValue() + " $");
-        System.out.println("Рік створення: " + item.getCreatedDate());
-        System.out.println("Дата отримання: " + item.getDateAquired());
-        System.out.println("Колекція: " + item.getCollection().getName());
+        printYellowMessage("\n=== Деталі предмета ====");
+        System.out.println(printBlue("Назва: ") + item.getName());
+        System.out.println(printBlue("Опис: ") + item.getDescription());
+        System.out.println(printBlue("Тип: ") + item.getItemType().getName());
+        System.out.println(printBlue("Вартість: ") + item.getValue() + " $");
+        System.out.println(printBlue("Рік створення: ") + item.getCreatedDate());
+        System.out.println(printBlue("Дата отримання: ") + item.getDateAquired());
     }
 
     @Override

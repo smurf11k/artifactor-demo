@@ -9,6 +9,7 @@ import com.renata.demoartifactor.domain.exception.EntityNotFoundException;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
 import com.renata.demoartifactor.persistance.entity.impl.Item;
 import com.renata.demoartifactor.persistance.entity.impl.User;
+import com.renata.demoartifactor.persistance.exception.EntityArgumentException;
 import com.renata.demoartifactor.persistance.repository.contracts.ItemRepository;
 import java.util.List;
 import java.util.Set;
@@ -44,7 +45,7 @@ final class ItemServiceImpl extends GenericService<Item> implements ItemService 
             throw new EntityNotFoundException("У користувача немає колекцій");
         }
 
-        return userCollections.get(0);
+        return userCollections.getFirst();
     }
 
     @Override
@@ -59,20 +60,23 @@ final class ItemServiceImpl extends GenericService<Item> implements ItemService 
 
     @Override
     public Item add(ItemAddDto itemAddDto) {
-        Item item = new Item(
-            itemAddDto.getId(),
-            itemAddDto.getName(),
-            itemAddDto.getItemType(),
-            itemAddDto.getCollection(),
-            itemAddDto.getValue(),
-            itemAddDto.getCreatedDate(),
-            itemAddDto.getDateAquired(),
-            itemAddDto.getDescription()
-        );
+        try {
+            Item item = new Item(
+                itemAddDto.getId(),
+                itemAddDto.getName(),
+                itemAddDto.getItemType(),
+                itemAddDto.getCollection(),
+                itemAddDto.getValue(),
+                itemAddDto.getCreatedDate(),
+                itemAddDto.getDateAquired(),
+                itemAddDto.getDescription()
+            );
 
-        itemRepository.add(item);
-
-        return item;
+            itemRepository.add(item);
+            return item;
+        } catch (EntityArgumentException e) {
+            throw new IllegalArgumentException(String.join(", ", e.getErrors()));
+        }
     }
 
     @Override
@@ -91,7 +95,7 @@ final class ItemServiceImpl extends GenericService<Item> implements ItemService 
         existingItem.setDateAquired(itemUpdateDto.dateAquired());
         existingItem.setDescription(itemUpdateDto.description());
 
-        itemRepository.save(existingItem);
+        itemRepository.update(existingItem);
     }
 
     public Item findItemById(List<Item> items, UUID id) {
@@ -105,7 +109,12 @@ final class ItemServiceImpl extends GenericService<Item> implements ItemService 
 
     @Override
     public void delete(UUID itemId) {
-        itemRepository.delete(itemId);
+        User currentUser = authService.getUser();
+        AntiqueCollection collection = getUserCollection(currentUser);
+        List<Item> userItems = getAllByCollection(collection);
+
+        Item itemToRemove = findItemById(userItems, itemId);
+        itemRepository.remove(itemToRemove);
     }
 
 }

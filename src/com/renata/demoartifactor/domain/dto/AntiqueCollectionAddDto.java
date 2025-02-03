@@ -18,7 +18,7 @@ public final class AntiqueCollectionAddDto extends Entity {
         this.name = name;
         this.description = description;
         this.createdDate = createdDate;
-        this.owner = owner; // current user
+        this.owner = owner;
     }
 
     public String name() {

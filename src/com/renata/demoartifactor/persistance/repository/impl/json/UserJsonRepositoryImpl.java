@@ -30,9 +30,7 @@ final class UserJsonRepositoryImpl
     @Override
     public User add(User user) {
         super.add(user);
-        
         JsonRepositoryFactory.getInstance().commit();
-
         return user;
     }
 }

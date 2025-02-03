@@ -74,23 +74,18 @@ public class GenericJsonRepository<E extends Entity> implements Repository<E> {
         }
     }
 
-    // Метод для оновлення сутності
     public void update(E entity) {
-        // Знаходимо предмет за ID
         Optional<E> existingEntity = findById(entity.getId());
 
         if (existingEntity.isPresent()) {
-            // Якщо предмет знайдений, заміняємо його на нову сутність
             entities.remove(existingEntity.get());
             entities.add(entity);
-            // Після оновлення зберігаємо зміни в файл
             saveAll();
         } else {
             throw new IllegalArgumentException("Сутність з таким ID не знайдена.");
         }
     }
 
-    // Метод для збереження оновлених сутностей
     private void saveAll() {
         try {
             Files.writeString(path, gson.toJson(entities));
