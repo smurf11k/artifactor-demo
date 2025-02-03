@@ -1,0 +1,15 @@
+com.renata.demoartifactor
+com.renata.demoartifactor.appui
+com.renata.demoartifactor.appui.forms
+com.renata.demoartifactor.appui.pages
+com.renata.demoartifactor.domain
+com.renata.demoartifactor.domain.contract
+com.renata.demoartifactor.domain.dto
+com.renata.demoartifactor.domain.exception
+com.renata.demoartifactor.domain.impl
+com.renata.demoartifactor.persistance.entity
+com.renata.demoartifactor.persistance.entity.impl
+com.renata.demoartifactor.persistance.exception
+com.renata.demoartifactor.persistance.repository
+com.renata.demoartifactor.persistance.repository.contracts
+com.renata.demoartifactor.persistance.repository.impl.json
