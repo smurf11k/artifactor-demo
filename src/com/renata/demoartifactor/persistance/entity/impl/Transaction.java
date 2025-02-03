@@ -1,21 +1,25 @@
 package com.renata.demoartifactor.persistance.entity.impl;
 
 import com.renata.demoartifactor.persistance.entity.Entity;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class Transaction extends Entity implements Comparable<Transaction> {
 
     public TransactionType type;
-    public LocalDate date;
+    public LocalDateTime date;
     public Item item;
+    public double value;
     public User user;
 
-    Transaction(UUID id, TransactionType type, LocalDate date, Item item, User user) {
+    public Transaction(UUID id, TransactionType type, LocalDateTime date, Item item, double value,
+        User user) {
         super(id);
         this.type = type;
         this.date = date;
         this.item = item;
+        this.value = value;
         this.user = user;
     }
 
@@ -27,11 +31,16 @@ public class Transaction extends Entity implements Comparable<Transaction> {
         this.type = type;
     }
 
-    public LocalDate getDate() {
+    public String getFormattedDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy 'о' HH:mm:ss");
+        return date.format(formatter);
+    }
+
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -43,12 +52,21 @@ public class Transaction extends Entity implements Comparable<Transaction> {
         this.user = user;
     }
 
-    //TODO add TransactionManager/TransactionService for logging all the transactions
-    // TransactionHistory => save them to a file (.xls)
-    // admin will have access to this file
-    // see OOP PR4
-    // private String timeFormat = "dd-MM-yyyy 'at' HH:mm";
-    // see JsonRepositoryFactory
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
 
     @Override
     public int compareTo(Transaction o) {

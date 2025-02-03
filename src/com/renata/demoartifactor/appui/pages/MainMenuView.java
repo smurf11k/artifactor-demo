@@ -1,6 +1,6 @@
 package com.renata.demoartifactor.appui.pages;
 
-import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printPromptBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
@@ -93,7 +93,7 @@ public final class MainMenuView implements Renderable {
                 System.out.println("12. " + VIEW_TRANSACTIONS.getName());
             }
             System.out.println("0. " + EXIT.getName());
-            System.out.print(printBlue("Зробіть вибір: "));
+            printPromptBlue("Зробіть вибір: ");
 
             String choice = reader.readLine();
             MainMenu selectedItem;

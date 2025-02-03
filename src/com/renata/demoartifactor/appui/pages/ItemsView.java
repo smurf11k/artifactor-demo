@@ -2,6 +2,7 @@ package com.renata.demoartifactor.appui.pages;
 
 import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printPromptBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
@@ -42,8 +43,7 @@ public final class ItemsView implements Renderable {
             }
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print(
-                printBlue("Виберіть номер предмета для перегляду (0 для повернення): "));
+            printPromptBlue("Виберіть номер предмета для перегляду (0 для повернення): ");
             int choice = Integer.parseInt(scanner.nextLine());
 
             if (choice > 0 && choice <= allItems.size()) {

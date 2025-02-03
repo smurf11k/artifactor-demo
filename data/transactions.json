@@ -1,1 +1,142 @@
-[]
+[
+  {
+    "type": "BUY",
+    "date": "03-02-2025 20:09:56",
+    "item": {
+      "name": "Вінтажний Cadillac",
+      "itemType": "CLASSIC_CARS",
+      "collection": {
+        "name": "Ринок",
+        "description": "В цій колекції знаходяться предмети доступні на ринку",
+        "createdDate": "03-02-2025",
+        "owner": {
+          "password": "Marketplace123",
+          "role": "ADMIN",
+          "email": "marketplace@gmail.com",
+          "username": "marketplace",
+          "id": "2375cda8-7f25-4ecc-962f-cfa3310af74c"
+        },
+        "id": "afeae353-0af5-4550-ace9-06d820ed6463"
+      },
+      "value": 364.01,
+      "createdDate": "1392",
+      "dateAquired": "03-02-2025",
+      "description": "Цікавий екземпляр антикваріату.",
+      "id": "cb96dcbd-a362-4d8e-b402-dbbe95e1296e"
+    },
+    "value": 364.01,
+    "user": {
+      "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+      "role": "ADMIN",
+      "email": "admin@gmail.com",
+      "username": "Admin",
+      "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+    },
+    "id": "33012d29-fe66-4843-a392-4eee36ba7ad0"
+  },
+  {
+    "type": "BUY",
+    "date": "03-02-2025 20:11:32",
+    "item": {
+      "name": "Фотографія сакури 20 століття",
+      "itemType": "ART",
+      "collection": {
+        "name": "Ринок",
+        "description": "В цій колекції знаходяться предмети доступні на ринку",
+        "createdDate": "03-02-2025",
+        "owner": {
+          "password": "Marketplace123",
+          "role": "ADMIN",
+          "email": "marketplace@gmail.com",
+          "username": "marketplace",
+          "id": "d3c59bb3-fcc4-4451-a2c1-3edc01b0b332"
+        },
+        "id": "bebed388-b69d-4b01-a2be-e7985a3fe1c8"
+      },
+      "value": 653.26,
+      "createdDate": "1392",
+      "dateAquired": "03-02-2025",
+      "description": "Цікавий екземпляр антикваріату.",
+      "id": "fa682c13-b9ba-4bad-b31b-f17f54add52f"
+    },
+    "value": 653.26,
+    "user": {
+      "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+      "role": "ADMIN",
+      "email": "admin@gmail.com",
+      "username": "Admin",
+      "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+    },
+    "id": "c3c4c9d0-3fc7-4a6d-b4a4-d910ccea238f"
+  },
+  {
+    "type": "SELL",
+    "date": "03-02-2025 20:11:22",
+    "item": {
+      "name": "перо",
+      "itemType": "BOOKS_AND_MANUSCRIPTS",
+      "collection": {
+        "name": "Цікавинки ринку",
+        "description": "В цій колекції зібрані цікаві екземпляри предметів які розпродавались на ринку.",
+        "createdDate": "03-02-2025",
+        "owner": {
+          "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+          "role": "ADMIN",
+          "email": "admin@gmail.com",
+          "username": "Admin",
+          "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+        },
+        "id": "f1ad6e2c-55f9-4c90-aee6-c733b74251d9"
+      },
+      "value": 14.0,
+      "createdDate": "???",
+      "dateAquired": "03-02-2025",
+      "description": "старовинне перо",
+      "id": "bce160e5-faf7-44a6-a2f9-9347de254563"
+    },
+    "value": 212.46,
+    "user": {
+      "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+      "role": "ADMIN",
+      "email": "admin@gmail.com",
+      "username": "Admin",
+      "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+    },
+    "id": "7ccc900a-1f0c-47c5-91ad-4f80cee13d5d"
+  },
+  {
+    "type": "SELL",
+    "date": "03-02-2025 21:11:53",
+    "item": {
+      "name": "Фотографія сакури 20 століття",
+      "itemType": "ART",
+      "collection": {
+        "name": "Цікавинки ринку",
+        "description": "В цій колекції зібрані цікаві екземпляри предметів які розпродавались на ринку.",
+        "createdDate": "03-02-2025",
+        "owner": {
+          "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+          "role": "ADMIN",
+          "email": "admin@gmail.com",
+          "username": "Admin",
+          "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+        },
+        "id": "f1ad6e2c-55f9-4c90-aee6-c733b74251d9"
+      },
+      "value": 653.26,
+      "createdDate": "1392",
+      "dateAquired": "03-02-2025",
+      "description": "Цікавий екземпляр антикваріату.",
+      "id": "b4bf94d6-3f3f-4b7e-8ef4-828c15b20d4b"
+    },
+    "value": 1054.84,
+    "user": {
+      "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+      "role": "ADMIN",
+      "email": "admin@gmail.com",
+      "username": "Admin",
+      "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+    },
+    "id": "d24c1b08-dea1-4bf4-ad63-5eb1f098ad21"
+  }
+]

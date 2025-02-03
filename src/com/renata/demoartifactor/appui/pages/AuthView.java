@@ -2,6 +2,7 @@ package com.renata.demoartifactor.appui.pages;
 
 import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printPromptBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.pages.AuthView.AuthMenu.EXIT;
@@ -37,10 +38,10 @@ public final class AuthView implements Renderable {
 
         switch (selectedItem) {
             case SIGN_IN -> {
-                System.out.print(printBlue("Впишіть ваш логін: "));
+                printPromptBlue("Впишіть ваш логін: ");
                 String username = reader.readLine();
 
-                System.out.print(printBlue("Впишіть ваш пароль: "));
+                printPromptBlue("Впишіть ваш пароль: ");
                 String password = reader.readLine();
 
                 try {
@@ -59,13 +60,13 @@ public final class AuthView implements Renderable {
             }
             case SIGN_UP -> {
 
-                System.out.print(printBlue("Впишіть ваш логін: "));
+                printPromptBlue("Впишіть ваш логін: ");
                 String username = reader.readLine();
 
-                System.out.print(printBlue("Впишіть ваш пароль: "));
+                printPromptBlue("Впишіть ваш пароль: ");
                 String password = reader.readLine();
 
-                System.out.print(printBlue("Вкажіть вашу електронну пошту: "));
+                printPromptBlue("Вкажіть вашу електронну пошту: ");
                 String email = reader.readLine();
 
                 try {
@@ -77,7 +78,7 @@ public final class AuthView implements Renderable {
                     );
 
                     signUpService.signUp(userAddDto, () -> {
-                        System.out.print(printBlue("Введіть код підтвердження з вашої пошти: "));
+                        printPromptBlue("Введіть код підтвердження з вашої пошти: ");
                         try {
                             return reader.readLine();
                         } catch (IOException e) {
@@ -90,7 +91,7 @@ public final class AuthView implements Renderable {
                     boolean authenticate = authService.authenticate(username, password);
                     if (authenticate) {
                         User user = authService.getUser();
-                        System.out.printf("Вхід виконано автоматично. Роль: %s%n", user.getRole());
+                        System.out.printf("Аутентифікація успішна. Роль: %s%n", user.getRole());
 
                         new MainMenuView(user.getRole(), serviceFactory).render();
                     } else {

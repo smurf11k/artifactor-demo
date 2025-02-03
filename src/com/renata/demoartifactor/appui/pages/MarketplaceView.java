@@ -2,8 +2,12 @@ package com.renata.demoartifactor.appui.pages;
 
 import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printGreen;
+import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printPromptBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printYellow;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
 import static com.renata.demoartifactor.appui.pages.MarketplaceView.MarketMenu.BUY_ITEM;
 import static com.renata.demoartifactor.appui.pages.MarketplaceView.MarketMenu.EXIT;
@@ -13,21 +17,31 @@ import static com.renata.demoartifactor.appui.pages.MarketplaceView.MarketMenu.V
 
 import com.renata.demoartifactor.appui.PageFactory;
 import com.renata.demoartifactor.appui.Renderable;
+import com.renata.demoartifactor.domain.contract.AntiqueCollectionService;
+import com.renata.demoartifactor.domain.contract.AuthService;
+import com.renata.demoartifactor.domain.contract.ItemService;
+import com.renata.demoartifactor.domain.contract.TransactionService;
+import com.renata.demoartifactor.domain.dto.ItemAddDto;
+import com.renata.demoartifactor.domain.dto.TransactionAddDto;
 import com.renata.demoartifactor.domain.impl.ServiceFactory;
 import com.renata.demoartifactor.persistance.entity.impl.AntiqueCollection;
 import com.renata.demoartifactor.persistance.entity.impl.Item;
 import com.renata.demoartifactor.persistance.entity.impl.Item.ItemType;
+import com.renata.demoartifactor.persistance.entity.impl.Transaction;
 import com.renata.demoartifactor.persistance.entity.impl.User;
 import com.renata.demoartifactor.persistance.entity.impl.User.Role;
+import com.renata.demoartifactor.persistance.repository.impl.json.JsonRepositoryFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class MarketplaceView implements Renderable {
@@ -66,7 +80,7 @@ public class MarketplaceView implements Renderable {
             System.out.println(counter + ". " + item.getName() + " - " + item.getValue() + " $");
             counter++;
         }
-        System.out.print(printBlue("Виберіть номер предмету для перегляду (0 для повернення): "));
+        printPromptBlue("Виберіть номер предмету для перегляду (0 для повернення): ");
         try {
             String choice = reader.readLine();
             int index = Integer.parseInt(choice);
@@ -81,21 +95,178 @@ public class MarketplaceView implements Renderable {
     }
 
     private void sellItem() {
-        //show user collections
-        //choose collection
-        //choose item to sell
-        //choose price (maybe add bidding so the price would change a couple of times)
-        //for example: price start at the item price, then the user has option: wait or sell
-        //the price increases for random amount (+random number)
-        //user option again wait or sell, and repeat this for 3-5 times
-        // and then after the last time just sell it automatically because 'no more bids'
-        //process the selling + add transaction log
+        AntiqueCollectionService antiqueCollectionService = serviceFactory.getCollectionService();
+        ItemService itemService = serviceFactory.getItemService();
+        AuthService authService = serviceFactory.getAuthService();
+
+        User currentUser = authService.getUser();
+        List<AntiqueCollection> collections = antiqueCollectionService.getAllByOwner(
+            currentUser.getUsername());
+
+        if (collections.isEmpty()) {
+            printRedMessage("У вас немає колекцій.");
+            return;
+        }
+
+        printPurpleMessage("\n=== Ваші колекції ===");
+        for (int i = 0; i < collections.size(); i++) {
+            AntiqueCollection collection = collections.get(i);
+            System.out.printf("%d. %s - %s%n", i + 1, collection.getName(),
+                collection.getDescription());
+        }
+
+        Scanner scanner = new Scanner(System.in);
+        printPromptBlue("Виберіть номер колекції для перегляду (0 для виходу): ");
+        int collectionChoice = Integer.parseInt(scanner.nextLine());
+
+        if (collectionChoice <= 0 || collectionChoice > collections.size()) {
+            printYellowMessage("Повернення до меню...");
+            return;
+        }
+
+        AntiqueCollection selectedCollection = collections.get(collectionChoice - 1);
+        List<Item> items = itemService.getAllByCollection(selectedCollection);
+
+        if (items.isEmpty()) {
+            printRedMessage("У цій колекції немає предметів.");
+            return;
+        }
+
+        printYellowMessage("\n=== Предмети у колекції ===");
+        for (int i = 0; i < items.size(); i++) {
+            System.out.printf("%d. %s (Стартова ціна: %.2f$)%n", i + 1, items.get(i).getName(),
+                items.get(i).getValue());
+        }
+
+        printPromptBlue("Виберіть номер предмета для продажу (0 для виходу): ");
+        int itemChoice = Integer.parseInt(scanner.nextLine());
+
+        if (itemChoice < 0 || itemChoice > items.size()) {
+            printYellowMessage("Повернення до меню...");
+            return;
+        }
+
+        Item itemToSell = items.get(itemChoice - 1);
+        double finalPrice = startAuction(itemToSell);
+        createTransaction(Transaction.TransactionType.SELL, itemToSell, finalPrice);
+
+        itemService.delete(itemToSell.getId());
+        JsonRepositoryFactory.getInstance().commit();
+    }
+
+    private double startAuction(Item item) {
+        double startingPrice = item.getValue();
+        double finalPrice = startingPrice;
+        Random random = new Random();
+        Scanner scanner = new Scanner(System.in);
+        int auctionRounds = random.nextInt(5) + 3;
+        printGreenMessage("Аукціон розпочато!");
+
+        for (int i = 0; i < auctionRounds; i++) {
+            printPromptBlue("Чекати наступної ставки чи продати? (1 - чекати, 2 - продати): ");
+            String choice = scanner.nextLine();
+            if ("2".equals(choice)) {
+                break;
+            }
+            finalPrice += random.nextDouble() * 100;
+            finalPrice = Math.round(finalPrice * 100.0) / 100.0;
+            System.out.println("Поточна ціна: " + printGreen(finalPrice + " $"));
+        }
+        return finalPrice;
+    }
+
+    private void createTransaction(Transaction.TransactionType type, Item item, double price) {
+        AuthService authService = serviceFactory.getAuthService();
+        User currentUser = authService.getUser();
+        TransactionService transactionService = serviceFactory.getTransactionService();
+
+        TransactionAddDto transactionAddDto = new TransactionAddDto(
+            UUID.randomUUID(),
+            type,
+            LocalDateTime.now(),
+            item,
+            price,
+            currentUser
+        );
+
+        transactionService.add(transactionAddDto);
+        JsonRepositoryFactory.getInstance().commit();
+        System.out.println(printYellow(type.getName()) + " '" + item.getName()
+            + "' за " + printGreen(price + " $"));
     }
 
     private void buyItem() {
-        //show marketplace items: itemName - price
-        //choose item to buy
-        //process the payment + add transaction log
+        ItemService itemService = serviceFactory.getItemService();
+        AntiqueCollectionService antiqueCollectionService = serviceFactory.getCollectionService();
+        AuthService authService = serviceFactory.getAuthService();
+
+        User currentUser = authService.getUser();
+
+        printPurpleMessage("\n=== Доступні предмети ===");
+        int counter = 1;
+        for (Item item : marketplaceItems) {
+            System.out.println(counter + ". " + item.getName() + " - " + item.getValue() + " $");
+            counter++;
+        }
+        printPromptBlue("Виберіть номер предмету для покупки (0 для повернення): ");
+
+        try {
+            String choice = reader.readLine();
+            int index = Integer.parseInt(choice);
+            if (index == 0) {
+                printYellowMessage("Повернення до меню...");
+                return;
+            }
+
+            if (index > 0 && index <= marketplaceItems.size()) {
+                Item selectedItem = marketplaceItems.get(index - 1);
+                printItemDetails(selectedItem);
+
+                List<AntiqueCollection> collections = antiqueCollectionService.getAllByOwner(
+                    currentUser.getUsername());
+                if (collections.isEmpty()) {
+                    printRedMessage("У вас немає колекцій для додавання предмета.");
+                    return;
+                }
+
+                printPurpleMessage("\n=== Ваші колекції ===");
+                for (int i = 0; i < collections.size(); i++) {
+                    System.out.printf("%d. %s%n", i + 1, collections.get(i).getName());
+                }
+                printPromptBlue("Виберіть номер колекції для додавання предмета (0 для виходу): ");
+                int collectionChoice = Integer.parseInt(reader.readLine());
+
+                if (collectionChoice <= 0 || collectionChoice > collections.size()) {
+                    printYellowMessage("Повернення до меню...");
+                    return;
+                }
+
+                AntiqueCollection selectedCollection = collections.get(collectionChoice - 1);
+
+                ItemAddDto itemAddDto = new ItemAddDto(
+                    UUID.randomUUID(),
+                    selectedItem.getName(),
+                    selectedItem.getItemType(),
+                    selectedCollection,
+                    selectedItem.getValue(),
+                    selectedItem.getCreatedDate(),
+                    LocalDate.now(),
+                    selectedItem.getDescription()
+                );
+
+                itemService.add(itemAddDto);
+                JsonRepositoryFactory.getInstance().commit();
+
+                createTransaction(Transaction.TransactionType.BUY, selectedItem,
+                    selectedItem.getValue());
+
+                printGreenMessage("Предмет успішно придбано!");
+            } else {
+                printRedMessage("Неправильний вибір.");
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Неправильний вибір.");
+        }
     }
 
     private void printItemDetails(Item item) {

@@ -43,10 +43,10 @@ public final class AddItemForm implements Renderable {
         try {
             choice = Integer.parseInt(input);
             if (choice < 1 || choice > maxOption) {
-                throw new IllegalArgumentException("Невірний вибір. Спробуйте ще раз.");
+                throw new IllegalArgumentException("Неправильний вибір.");
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Введено не число. Спробуйте ще раз.");
+            throw new IllegalArgumentException("Неправильний вибір.");
         }
         return choice;
     }
@@ -61,7 +61,7 @@ public final class AddItemForm implements Renderable {
             return value;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(
-                "Введено некоректне значення вартості. Спробуйте ще раз.");
+                "Введено некоректне значення вартості.");
         }
     }
 
@@ -102,7 +102,7 @@ public final class AddItemForm implements Renderable {
 
         String description = readLineWithPrompt("Додайте опис предмета: ");
         double value = readDoubleWithValidation("Вкажіть вартість предмета ($): ");
-        String createdDate = readLineWithPrompt("Вкажіть рік створення предмета (yyyy): ");
+        String createdDate = readLineWithPrompt("Вкажіть дату створення предмета (yyyy): ");
         LocalDate dateAquired = readDateWithValidation(
             "Вкажіть дату отримання предмета (yyyy-mm-dd): ");
 

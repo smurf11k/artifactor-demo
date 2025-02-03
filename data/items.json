@@ -658,5 +658,49 @@
     "dateAquired": "01-02-2025",
     "description": "Щит, що свідчить про давні битви.",
     "id": "9eee5452-d085-4e60-bf7b-91fb819efc6f"
+  },
+  {
+    "name": "Книга про подорожі",
+    "itemType": "BOOKS_AND_MANUSCRIPTS",
+    "collection": {
+      "name": "jhgfd",
+      "description": "",
+      "createdDate": "03-02-2025",
+      "owner": {
+        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+        "role": "ADMIN",
+        "email": "admin@gmail.com",
+        "username": "Admin",
+        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+      },
+      "id": "f1ad6e2c-55f9-4c90-aee6-c733b74251d9"
+    },
+    "value": 867.16,
+    "createdDate": "1318",
+    "dateAquired": "03-02-2025",
+    "description": "Цікавий екземпляр антикваріату.",
+    "id": "ce5bde68-dc3f-4d24-841a-709d8ba81629"
+  },
+  {
+    "name": "Вінтажний Cadillac",
+    "itemType": "CLASSIC_CARS",
+    "collection": {
+      "name": "Цікавинки ринку",
+      "description": "В цій колекції зібрані цікаві екземпляри предметів які розпродавались на ринку.",
+      "createdDate": "03-02-2025",
+      "owner": {
+        "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+        "role": "ADMIN",
+        "email": "admin@gmail.com",
+        "username": "Admin",
+        "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+      },
+      "id": "f1ad6e2c-55f9-4c90-aee6-c733b74251d9"
+    },
+    "value": 364.01,
+    "createdDate": "1392",
+    "dateAquired": "03-02-2025",
+    "description": "Цікавий екземпляр антикваріату.",
+    "id": "1eb00616-dcdf-472b-93c6-b5c90e6ebe0d"
   }
 ]

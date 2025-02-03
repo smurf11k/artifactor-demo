@@ -128,5 +128,18 @@
       "id": "2090230a-e47d-4dce-8027-3a05e884771b"
     },
     "id": "92c93d38-05c3-4d26-899c-2eec82be5fc5"
+  },
+  {
+    "name": "Цікавинки ринку",
+    "description": "В цій колекції зібрані цікаві екземпляри предметів які розпродавались на ринку.",
+    "createdDate": "03-02-2025",
+    "owner": {
+      "password": "$2a$10$aPZ85YJ2UomoONP3v6uIE.QBiipQiwZuZmPeAHeaACYN90hMoX4bi",
+      "role": "ADMIN",
+      "email": "admin@gmail.com",
+      "username": "Admin",
+      "id": "deb8fe02-56ce-4965-9e10-f57b747fc744"
+    },
+    "id": "f1ad6e2c-55f9-4c90-aee6-c733b74251d9"
   }
 ]

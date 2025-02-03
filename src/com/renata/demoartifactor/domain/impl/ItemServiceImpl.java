@@ -63,13 +63,13 @@ final class ItemServiceImpl extends GenericService<Item> implements ItemService 
         try {
             Item item = new Item(
                 itemAddDto.getId(),
-                itemAddDto.getName(),
-                itemAddDto.getItemType(),
-                itemAddDto.getCollection(),
-                itemAddDto.getValue(),
-                itemAddDto.getCreatedDate(),
-                itemAddDto.getDateAquired(),
-                itemAddDto.getDescription()
+                itemAddDto.name(),
+                itemAddDto.itemType(),
+                itemAddDto.antiqueCollection(),
+                itemAddDto.value(),
+                itemAddDto.createdDate(),
+                itemAddDto.dateAquired(),
+                itemAddDto.description()
             );
 
             itemRepository.add(item);
@@ -116,5 +116,4 @@ final class ItemServiceImpl extends GenericService<Item> implements ItemService 
         Item itemToRemove = findItemById(userItems, itemId);
         itemRepository.remove(itemToRemove);
     }
-
 }

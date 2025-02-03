@@ -1,6 +1,7 @@
 package com.renata.demoartifactor.appui.pages;
 
 import static com.renata.demoartifactor.appui.PrintUI.printBlue;
+import static com.renata.demoartifactor.appui.PrintUI.printPromptBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
@@ -42,8 +43,7 @@ public final class AntiqueCollectionView implements Renderable {
             }
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print(
-                printBlue("Виберіть номер колекції для перегляду (0 для повернення): "));
+            printPromptBlue("Виберіть номер колекції для перегляду (0 для повернення): ");
             int choice = Integer.parseInt(scanner.nextLine());
 
             if (choice > 0 && choice <= collections.size()) {

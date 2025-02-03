@@ -35,11 +35,11 @@ public class JsonRepositoryFactory extends RepositoryFactory {
         gsonBuilder.registerTypeAdapter(LocalDateTime.class,
             (JsonSerializer<LocalDateTime>) (localDate, srcType, context) ->
                 new JsonPrimitive(
-                    DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm").format(localDate)));
+                    DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").format(localDate)));
         gsonBuilder.registerTypeAdapter(LocalDateTime.class,
             (JsonDeserializer<LocalDateTime>) (json, typeOfT, context) ->
                 LocalDateTime.parse(json.getAsString(),
-                    DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
+                    DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
                         .withLocale(Locale.of("uk", "UA"))));
 
         // Адаптер для типу даних LocalDate при серіалізації/десеріалізації

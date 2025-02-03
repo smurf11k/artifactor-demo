@@ -3,6 +3,7 @@ package com.renata.demoartifactor.appui.forms;
 import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printPromptBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printRedMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printYellowMessage;
@@ -49,8 +50,7 @@ public final class EditCollectionForm implements Renderable {
             }
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print(
-                printBlue("Виберіть номер колекції для редагування (0 для повернення): "));
+            printPromptBlue("Виберіть номер колекції для редагування (0 для повернення): ");
             int choice = Integer.parseInt(scanner.nextLine());
 
             if (choice > 0 && choice <= collections.size()) {
@@ -68,15 +68,13 @@ public final class EditCollectionForm implements Renderable {
         try {
             System.out.println(printBlue("Редагування колекції: ") + collection.getName());
 
-            System.out.print(
-                printBlue("Введіть нову назву колекції (залиште порожнім для відміни): "));
+            printPromptBlue("Введіть нову назву колекції (залиште порожнім для відміни): ");
             String newName = reader.readLine();
             if (!newName.isEmpty()) {
                 collection.setName(newName);
             }
 
-            System.out.print(
-                printBlue("Введіть новий опис колекції (залиште порожнім для відміни): "));
+            printPromptBlue("Введіть новий опис колекції (залиште порожнім для відміни): ");
             String newDescription = reader.readLine();
             if (!newDescription.isEmpty()) {
                 collection.setDescription(newDescription);

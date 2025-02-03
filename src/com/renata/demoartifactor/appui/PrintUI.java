@@ -16,8 +16,12 @@ public class PrintUI {
                 printYellowMessage(line);
             }
         } catch (IOException e) {
-            System.err.println("Помилка при читанні файлу: " + e.getMessage());
+            System.err.println("Помилка при читанні файлу: " + filePath);
         }
+    }
+
+    public static void printPromptBlue(String message) {
+        System.out.print(printBlue(message));
     }
 
     public static void printRedMessage(String message) {

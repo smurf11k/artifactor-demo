@@ -3,6 +3,7 @@ package com.renata.demoartifactor.appui.forms;
 import static com.renata.demoartifactor.appui.PrintUI.printBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printBlueMessage;
 import static com.renata.demoartifactor.appui.PrintUI.printGreenMessage;
+import static com.renata.demoartifactor.appui.PrintUI.printPromptBlue;
 import static com.renata.demoartifactor.appui.PrintUI.printPurpleMessage;
 
 import com.renata.demoartifactor.appui.Renderable;
@@ -43,7 +44,7 @@ public final class EditItemForm implements Renderable {
         for (int i = 0; i < collections.size(); i++) {
             System.out.printf("%d. %s%n", i + 1, collections.get(i).getName());
         }
-        System.out.print(printBlue("Виберіть номер колекції: "));
+        printPromptBlue("Виберіть номер колекції: ");
         int collectionChoice = Integer.parseInt(reader.readLine());
         AntiqueCollection collection = collections.get(collectionChoice - 1);
 
@@ -58,52 +59,51 @@ public final class EditItemForm implements Renderable {
         for (int i = 0; i < userItems.size(); i++) {
             System.out.printf("%d. %s%n", i + 1, userItems.get(i).getName());
         }
-        System.out.print(printBlue("Виберіть номер предмета: "));
+        printPromptBlue("Виберіть номер предмета: ");
         int itemChoice = Integer.parseInt(reader.readLine());
         Item item = userItems.get(itemChoice - 1);
 
         System.out.println(printBlue("Редагування предмета: ") + item.getName());
 
-        printBlueMessage("Нова назва предмета (залиште порожнім для відміни): ");
+        printPromptBlue("Нова назва предмета (залиште порожнім для відміни): ");
         String newName = reader.readLine();
         if (!newName.isEmpty()) {
             item.setName(newName);
         }
 
-        System.out.print(printBlue("Новий опис предмета (залиште порожнім для відміни): "));
+        printPromptBlue("Новий опис предмета (залиште порожнім для відміни): ");
         String newDescription = reader.readLine();
         if (!newDescription.isEmpty()) {
             item.setDescription(newDescription);
         }
 
-        System.out.print(printBlue("Нова вартість предмета (залиште порожнім для відміни): "));
+        printPromptBlue("Нова вартість предмета (залиште порожнім для відміни): ");
         String newValue = reader.readLine();
         if (!newValue.isEmpty()) {
             item.setValue(Double.parseDouble(newValue));
         }
 
-        System.out.print(
-            printBlue("Нова дата створення предмета (yyyy) (залиште порожнім для відміни): "));
+        printPromptBlue("Нова дата створення предмета (yyyy) (залиште порожнім для відміни): ");
         String newCreatedDate = reader.readLine();
         if (!newCreatedDate.isEmpty()) {
             item.setCreatedDate(newCreatedDate);
         }
 
-        System.out.print(printBlue(
-            "Нова дата отримання предмета (yyyy-mm-dd) (залиште порожнім для відміни): "));
+        printPromptBlue(
+            "Нова дата отримання предмета (yyyy-mm-dd) (залиште порожнім для відміни): ");
         String newDateAquired = reader.readLine();
         if (!newDateAquired.isEmpty()) {
             item.setDateAquired(LocalDate.parse(newDateAquired));
         }
 
-        System.out.print(printBlue("Ви хочете змінити колекцію предмета? (+/-): "));
+        printPromptBlue("Ви хочете змінити колекцію предмета? (+/-): ");
         String changeCollectionChoice = reader.readLine();
         if (changeCollectionChoice.equalsIgnoreCase("+")) {
             printBlueMessage("Виберіть нову колекцію для предмета:");
             for (int i = 0; i < collections.size(); i++) {
                 System.out.printf("%d. %s%n", i + 1, collections.get(i).getName());
             }
-            System.out.print(printBlue("Виберіть номер нової колекції: "));
+            printPromptBlue("Виберіть номер нової колекції: ");
             int collectionChoiceNew = Integer.parseInt(reader.readLine());
             item.setCollection(collections.get(collectionChoiceNew - 1));
         }

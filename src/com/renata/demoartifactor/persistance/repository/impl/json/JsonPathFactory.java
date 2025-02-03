@@ -1,5 +1,6 @@
 package com.renata.demoartifactor.persistance.repository.impl.json;
 
+import com.renata.demoartifactor.persistance.exception.JsonFileIOException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,13 +27,20 @@ public enum JsonPathFactory {
     }
 
     private void ensureFileExists() {
+        File dataDir = new File(DATA_DIRECTORY);
+        if (!dataDir.exists() && !dataDir.mkdirs()) {
+            throw new JsonFileIOException("Не вдалося створити директорію: " + DATA_DIRECTORY);
+        }
+
         File file = filePath.toFile();
         if (!file.exists()) {
             try {
-                Files.createDirectories(filePath.getParent()); // Створюємо папку, якщо її немає
-                Files.write(filePath, "[]".getBytes()); // Створюємо файл з порожнім JSON-масивом
+                Files.createDirectories(
+                    filePath.getParent());
+                Files.write(filePath, "[]".getBytes());
             } catch (IOException e) {
-                throw new RuntimeException("Не вдалося створити JSON-файл: " + filePath, e);
+                throw new JsonFileIOException(
+                    "Не вдалося створити JSON-файл: " + filePath + "\n" + e);
             }
         }
     }

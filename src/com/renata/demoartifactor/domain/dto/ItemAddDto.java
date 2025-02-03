@@ -33,31 +33,31 @@ public final class ItemAddDto extends Entity {
         }
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public ItemType getItemType() {
+    public ItemType itemType() {
         return itemType;
     }
 
-    public AntiqueCollection getCollection() {
+    public AntiqueCollection antiqueCollection() {
         return collection;
     }
 
-    public double getValue() {
+    public double value() {
         return value;
     }
 
-    public String getCreatedDate() {
+    public String createdDate() {
         return createdDate;
     }
 
-    public LocalDate getDateAquired() {
+    public LocalDate dateAquired() {
         return dateAquired;
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
 }

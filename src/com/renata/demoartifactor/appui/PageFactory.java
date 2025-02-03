@@ -51,13 +51,11 @@ public class PageFactory {
     public AntiqueCollectionsView createAntiqueCollectionsView() {
         return new AntiqueCollectionsView(serviceFactory);
     }
-
-    // Метод для створення сторінки з колекцією
+    
     public Renderable createAntiqueCollectionView() {
         return new AntiqueCollectionView(serviceFactory);
     }
 
-    // Метод для створення сторінки з предметом, передаючи колекцію
     public Renderable createItemView(AntiqueCollection collection) {
         return new ItemView(serviceFactory, collection);
     }
@@ -96,5 +94,3 @@ public class PageFactory {
         return new EditItemForm(serviceFactory);
     }
 }
-
-
