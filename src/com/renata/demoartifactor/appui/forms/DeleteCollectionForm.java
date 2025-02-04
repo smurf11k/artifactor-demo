@@ -67,7 +67,7 @@ public final class DeleteCollectionForm implements Renderable {
                 System.out.print(printBlue("Ви впевнені, що хочете видалити цю колекцію? (+/-): "));
                 String confirmation = scanner.nextLine().trim().toLowerCase();
 
-                if (!confirmation.equals("-")) {
+                if (!confirmation.equals("+")) {
                     printRedMessage("Видалення скасовано.");
                     return;
                 }

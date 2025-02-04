@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>D:\IMPORTANT\College\OOP\PRAKT1\demoartifactor\out\artifacts\com_renata_demoartifactor_jar\com.renata.demoartifactor.jar</jar>
+  <outfile>D:\IMPORTANT\College\OOP\PRAKT1\demoartifactor\out\artifacts\com_renata_demoartifactor_jar\demoartifactor.exe</outfile>
+  <errTitle>This program requires java. Please install java first.</errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>D:\IMPORTANT\College\OOP\PRAKT1\tied-scroll.ico</icon>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>
