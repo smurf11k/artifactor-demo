@@ -3,7 +3,7 @@
 Artifactor – a console application for organizing and managing antique collections.
 
 ## Description
-This project was created as part of a school assignment. Artifactor allows users to add, edit, delete, and view information about antique items using object-oriented programming (OOP) principles in Java.
+This project was created as part of a college assignment. Artifactor allows users to add, edit, delete, and view information about antique items using object-oriented programming (OOP) principles in Java.
 
 ## Features
 - Add new items to the collection
@@ -24,7 +24,7 @@ This project was created as part of a school assignment. Artifactor allows users
    ```
 2. Navigate to the artifacts folder:
    ```sh
-   out>artifacts>com_renata_demoartifactor_jar
+   out > artifacts > com_renata_demoartifactor_jar
    ```
 3. Run the jar file in the terminal:
    ```sh
@@ -45,10 +45,10 @@ This project is open-source and can be used for educational purposes.
 
 # Artifactor
 
-Artifactor – консольний застосунок для організації та керування колекціями антикваріату.
+Artifactor – консольний застосунок для створення та керування колекціями антикваріату.
 
 ## Опис
-Цей проєкт створений у межах шкільного завдання. Artifactor дозволяє додавати, редагувати, видаляти та переглядати інформацію про антикварні предмети, використовуючи принципи об'єктно-орієнтованого програмування (OOP) на Java.
+Цей проєкт створений у межах практики ПГФК УЖНУ. Artifactor дозволяє додавати, редагувати, видаляти та переглядати інформацію про антикварні предмети, використовуючи принципи об'єктно-орієнтованого програмування (OOP) на Java.
 
 ## Функціонал
 - Додавання нових предметів у колекцію
@@ -69,7 +69,7 @@ Artifactor – консольний застосунок для організа
    ```
 2. Перейдіть у директорію проєкту:
    ```sh
-   out>artifacts>com_renata_demoartifactor_jar
+   out > artifacts > com_renata_demoartifactor_jar
    ```
 3. Запустіть jar файл через термінал:
    ```sh
