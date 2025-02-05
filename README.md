@@ -38,7 +38,7 @@ This project was created as part of a school assignment. Artifactor allows users
 ## License
 This project is open-source and can be used for educational purposes.
 
-=====================================================================================
+---
 
 # Artifactor
 
@@ -79,4 +79,3 @@ Artifactor – консольний застосунок для організа
 
 ## Ліцензія
 Цей проєкт є відкритим і може використовуватися для навчальних цілей.
-
