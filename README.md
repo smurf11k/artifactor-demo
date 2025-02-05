@@ -18,7 +18,10 @@ This project was created as part of a school assignment. Artifactor allows users
 - Console interface (UTF-8)
 
 ## Running the Application
-1. Dowload the zip file
+1. Dowload the zip file:
+   ```sh
+   demoartifactor.zip
+   ```
 2. Navigate to the artifacts folder:
    ```sh
    out>artifacts>com_renata_demoartifactor_jar
@@ -60,7 +63,10 @@ Artifactor – консольний застосунок для організа
 - Консольний інтерфейс (UTF-8)
 
 ## Запуск програми
-1. Завантажте zip файл
+1. Завантажте zip файл:
+   ```sh
+   demoartifactor.zip
+   ```
 2. Перейдіть у директорію проєкту:
    ```sh
    out>artifacts>com_renata_demoartifactor_jar
