@@ -1,5 +1,4 @@
 # Artifactor
-
 Artifactor – a console application for organizing and managing antique collections.
 
 ## Description
@@ -34,9 +33,6 @@ This project was created as part of a college assignment. Artifactor allows user
    ```sh
    demoartifactor.exe
    ```
-
-## Author
-**Munkacsy Renata**
 
 ## License
 This project is open-source and can be used for educational purposes.
