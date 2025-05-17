@@ -1,5 +1,5 @@
-# Artifactor (demo)
-Artifactor – a console application for organizing and managing antique collections.
+# Artifactor (CLI)
+Artifactor – an application for organizing and managing antique collections.
 
 ## Description
 This project was created as part of a college assignment. Artifactor allows users to add, edit, delete, and view information about antique items using object-oriented programming (OOP) principles in Java.
