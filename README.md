@@ -1,4 +1,4 @@
-# Artifactor
+# Artifactor (demo)
 Artifactor – a console application for organizing and managing antique collections.
 
 ## Description
